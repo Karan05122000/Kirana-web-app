@@ -1,9 +1,9 @@
 
   <div class="side-panel-container" [@animationOption1]="clickedDivState">
     <div class="side-panel">
-      <div class="main-logo-container">
+      <!-- <div class="main-logo-container">
         <img src="../../../assets/images/Logo.jpg" alt="logo" class="main-logo" />
-      </div>
+      </div> -->
       <div class="nav-options" *ngIf="!isExpanded">
         <a *ngFor="let item of navOptions" class="nav-option" [ngClass]="{'active': item.title == selectedOption.title}" (click)="navBarSelected(item)"><span><i class={{item.icon}}></i></span></a>
       </div>

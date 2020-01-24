@@ -1,19 +1,22 @@
 <div class="outer">
-    <mat-card>
-        <div class="tasks">
-            <div>
-                <p>{{taskRemaining}} out of {{taskTotal}}</p>
-            </div>
-            <div>
-                <mat-form-field>
-                    <label>Retailer : </label>
-                    <mat-select>
-                        <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>            
+  <mat-card [ngClass]="{'is-side-panel-expanded': isSidePanelExpanded}">
+    <div class="top-container">
+      <div class="task-container">
+        <p>{{taskRemaining}} out of {{taskTotal}}</p>
+      </div>
+
+      <div class="filter-container">
+        <div class="filter" *ngFor="let item of filters">
+          <mat-form-field>
+            <mat-label class="first">{{item}}</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-    </mat-card>
+      </div>
+    </div>
+  </mat-card>
 </div>

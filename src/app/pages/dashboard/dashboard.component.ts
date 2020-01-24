@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InteractionService } from 'src/app/services/interaction.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,10 +15,18 @@ export class DashboardComponent implements OnInit {
     {value: 'retailer-2', viewValue: 'Lucas'},
     {value: 'retailer-3', viewValue: 'Rebecca'}
   ];
+  filters: string[];
+  isSidePanelExpanded: boolean;
 
-  constructor() { }
+  constructor(private interaction: InteractionService) {
+    this.filters = ['Retailer', 'Status', 'Date'];
+    this.isSidePanelExpanded = this.interaction.getExpandedStatus();
+   }
 
   ngOnInit() {
+    this.interaction.expandedStatus$.subscribe( (res) => {
+      this.isSidePanelExpanded = res;
+    });
   }
 
 }
