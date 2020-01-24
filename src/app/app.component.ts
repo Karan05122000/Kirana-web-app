@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { navOptions } from './constants/constants';
 import { Router } from '@angular/router';
+import { InteractionService } from './services/interaction.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   isLogin: boolean;
   navBarOptions: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private interaction: InteractionService) {
     this.navBarOptions = navOptions.admin_panel;
     this.routerEventsTrigger();
   }
@@ -30,5 +31,6 @@ export class AppComponent {
 
   expandSidePanel(expanded: boolean) {
     this.isExpanded = expanded;
+    this.interaction.setExpandStatus(this.isExpanded);
   }
 }

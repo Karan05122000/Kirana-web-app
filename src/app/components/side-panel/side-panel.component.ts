@@ -26,7 +26,7 @@ import {
         })
       ),
       transition('start => end', animate(0)),
-      transition('end => start', animate('0.4s ease-out'))
+      // transition('end => start', animate('0.4s ease-out'))
     ])
   ]
 })

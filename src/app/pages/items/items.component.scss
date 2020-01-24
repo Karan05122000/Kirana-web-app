@@ -1,8 +1,11 @@
-.outer{
-    .mat-card{
-        margin-left: 200px;
-        margin-top: 50px;
-        margin-right: 25px;
-    }
-    
+.outer {
+  .mat-card {
+    margin-top: 50px;
+    margin-left: 7%;
+    margin: 50px 2% 0px 7%;
+  }
+  .is-side-panel-expanded {
+    margin-left: 15%;
+  }
+
 }
