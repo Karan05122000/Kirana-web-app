@@ -23,6 +23,8 @@ import { RetailerComponent } from './pages/retailer/retailer.component';
 import { ItemsComponent } from './pages/items/items.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { LoginComponent } from './pages/login/login.component';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { LoginComponent } from './pages/login/login.component';
     MatCardModule,
     MatMenuModule,
     MatSnackBarModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

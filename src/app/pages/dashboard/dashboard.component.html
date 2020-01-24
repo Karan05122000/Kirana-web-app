@@ -1,5 +1,19 @@
 <div class="outer">
     <mat-card>
-        <h1>Dashboard!</h1>
+        <div class="tasks">
+            <div>
+                <p>{{taskRemaining}} out of {{taskTotal}}</p>
+            </div>
+            <div>
+                <mat-form-field>
+                    <label>Retailer : </label>
+                    <mat-select>
+                        <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>            
+        </div>
     </mat-card>
 </div>
