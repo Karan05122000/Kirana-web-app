@@ -15,8 +15,39 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+
         </div>
       </div>
+      
+      <mat-divider></mat-divider>
+
     </div>
+    <div class="date">
+        <p><strong>{{today | date: 'fullDate'}}</strong> </p>
+    </div>
+    <div class="daysOfTheWeek">
+        <div class="day">
+        <div *ngFor="let item of daysOfTheWeek">
+            <div class="dayName"><p>{{item}}</p></div>
+            <div class="dateNumber"><p>{{dateNumber}}</p></div>
+        </div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div *ngFor="let item of daysOfTheWeek">
+      <mat-card>
+        <div class="content">
+          <h5>Content</h5>
+          <p class="event">Event Indicator</p>
+        </div>
+        <p>Due date : </p>
+        <div class="lastLine">
+          <p>Vendor name</p>
+          <p class="status">Status</p>
+        </div>
+      </mat-card>
+    </div>
+    
   </mat-card>
 </div>

@@ -24,6 +24,7 @@ import { ItemsComponent } from './pages/items/items.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { LoginComponent } from './pages/login/login.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatMenuModule,
     MatSnackBarModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

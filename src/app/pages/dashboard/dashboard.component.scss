@@ -4,7 +4,7 @@
     margin-top: 50px;
     margin-left: 7%;
     margin: 50px 2% 0px 7%;
-    display: flex;
+    // display: flex;
     // min-width: 800px;
 
     .top-container {
@@ -28,8 +28,66 @@
           flex-direction: row
         }
       }
+      .mat-divider{
+          margin-top: 30px;
+          border: 0;
+          height: 1px;
+          background: #333;
+          background-image: linear-gradient(to right, #ccc, rgb(89, 141, 54), #ccc);
+      }
+    }
+    .date{
+        padding: 15px;
+    }
+    .daysOfTheWeek{
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        .day{
+            display:flex;
+            padding: 5px;
+            margin-left: auto;
+            margin-right: auto;
+            .dayName{
+                margin-left: 80px;
+                padding: 10px;
+            }
+            .dateNumber{
+                margin-left: 80px;
+                padding: 0px;
+            }
+        }
+    }
+    .mat-divider{
+        margin-top: 5px;
+    }
+    .mat-card{
+      margin: 20px 50px 20px 50px;
+      padding: 20px;
+      .content{
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        .event{
+          text-align: right;
+        }
+      }
+      .lastLine{
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        .status{
+          color: white;
+          padding: 5px 15px 5px 15px;
+          background: rgb(87, 87, 214);
+          text-align: right;
+          border: 1px solid rgb(87, 87, 214);
+          border-radius: 5px;
+        }
+      }
     }
   }
+
   .is-side-panel-expanded {
     margin-left: 15% !important;
   }

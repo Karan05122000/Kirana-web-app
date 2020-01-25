@@ -15,6 +15,10 @@ export class DashboardComponent implements OnInit {
     {value: 'retailer-2', viewValue: 'Lucas'},
     {value: 'retailer-3', viewValue: 'Rebecca'}
   ];
+  today = Date.now();
+  daysOfTheWeek = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+  dateNumber=0;
+
   filters: string[];
   isSidePanelExpanded: boolean;
 
