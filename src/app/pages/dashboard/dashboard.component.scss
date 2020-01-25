@@ -81,8 +81,23 @@
           padding: 5px 15px 5px 15px;
           background: rgb(87, 87, 214);
           text-align: right;
-          border: 1px solid rgb(87, 87, 214);
+          // border: 1px solid rgb(87, 87, 214);
           border-radius: 5px;
+        }
+        .Delivered {
+          background-color: #2ED47A;
+        }
+        .Cancelled {
+          background-color: #F7685B;
+        }
+        .Packed {
+          background-color: #FFB946;
+        }
+        .Dispatched {
+          background-color: #56CCF2;
+        }
+        .Ordered {
+          background-color: #098EDF;
         }
       }
     }

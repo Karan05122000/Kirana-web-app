@@ -35,16 +35,16 @@
     </div>
     <mat-divider></mat-divider>
 
-    <div *ngFor="let item of daysOfTheWeek">
+    <div *ngFor="let item of allTransactions">
       <mat-card>
         <div class="content">
-          <h5>Content</h5>
-          <p class="event">Event Indicator</p>
+          <h5>{{ item.Consumer.Name }}</h5>
+          <p class="event">₹{{ item.OrderDetails.TotalPrice }}</p>
         </div>
-        <p>Due date : </p>
+        <p>Order date : {{ item.OrderDetails.OrderDate }} </p>
         <div class="lastLine">
-          <p>Vendor name</p>
-          <p class="status">Status</p>
+          <p>Vendor name : {{ item.Retailer.Name }}</p>
+          <p class="status" [ngClass]='setStatusColor(item.Status)'>{{ item.Status }}</p>
         </div>
       </mat-card>
     </div>
