@@ -1,8 +1,13 @@
 .outer {
+    height: 90vh;
+  overflow: scroll;
   .mat-card {
-    margin-top: 50px;
-    margin-left: 7%;
-    margin: 50px 2% 0px 7%;
+    margin: 50px 2% 0px 2%;
+    .item-cards {
+      .inner-item-mat-card {
+        margin: 20px;
+      }
+    }
   }
   .is-side-panel-expanded {
     margin-left: 15%;

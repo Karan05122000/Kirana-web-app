@@ -1,0 +1,13 @@
+.invite-request-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0;
+    .info {
+        display: flex;
+        flex-direction: column;
+    }
+    .more-option {
+        align-self: center;
+    }
+}

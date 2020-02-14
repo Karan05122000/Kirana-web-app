@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InteractionService } from 'src/app/services/interaction.service';
-import { TransactionService } from 'src/app/services/transaction.service';
+import { analytics } from './../../constants/mockup-data';
 
 
 @Component({
@@ -9,41 +9,17 @@ import { TransactionService } from 'src/app/services/transaction.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  taskTotal=10;
-  taskRemaining=0;
-  foods = [
-    {value: 'retailer-1', viewValue: 'George'},
-    {value: 'retailer-2', viewValue: 'Lucas'},
-    {value: 'retailer-3', viewValue: 'Rebecca'}
-  ];
-  today = Date.now();
-  daysOfTheWeek = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
-  dateNumber=0;
-
-  filters: string[];
   isSidePanelExpanded: boolean;
-  // tslint:disable-next-line: max-line-length
-  allTransactions: { Consumer: { Name: string; Area: string; }; Retailer: { Name: string; Area: string; }; OrderDetails: { OrderDate: string; ItemsPurchased: { ItemName: string; ItemPrice: number; Quantity: number; }[]; TotalPrice: number; }; Status: string; }[];
+  analytics: { name: string; count: number; }[];
 
-  constructor(private interaction: InteractionService, private transaction: TransactionService) {
-    this.filters = ['Retailer', 'Status', 'Date'];
+  constructor(private interaction: InteractionService) {
     this.isSidePanelExpanded = this.interaction.getExpandedStatus();
-   }
+  }
 
   ngOnInit() {
+    this.analytics = analytics;
     this.interaction.expandedStatus$.subscribe( (res) => {
       this.isSidePanelExpanded = res;
     });
-    this.getTransactionHistory();
   }
-
-  getTransactionHistory() {
-    this.allTransactions = this.transaction.getAllTransactions();
-  }
-
-  setStatusColor(status) {
-    return status;
-  }
-
 }

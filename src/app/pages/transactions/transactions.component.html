@@ -1,5 +1,51 @@
 <div class="outer">
-    <mat-card [ngClass]="{'is-side-panel-expanded': isSidePanelExpanded}">
-        <h1>Retailer!</h1>
-    </mat-card>
+    <div [ngClass]="{'is-side-panel-expanded': isSidePanelExpanded}">
+        <mat-card>
+            <h2>Transactions:</h2>
+            <div class="top-container">
+              <div class="task-container">
+                <p>{{taskRemaining}} out of {{taskTotal}}</p>
+              </div>
+              <div class="filter-container">
+                <div class="filter" *ngFor="let item of filters">
+                  <mat-form-field>
+                    <mat-label class="first">{{item}}</mat-label>
+                    <mat-select>
+                      <mat-option *ngFor="let food of foods" [value]="food.value">
+                        {{food.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+            <div class="date">
+                <p><strong>{{today | date: 'fullDate'}}</strong> </p>
+            </div>
+            <div class="daysOfTheWeek">
+                <div class="day">
+                <div *ngFor="let item of daysOfTheWeek">
+                    <div class="dayName"><p>{{item}}</p></div>
+                    <div class="dateNumber"><p>{{dateNumber}}</p></div>
+                </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="transaction-container" *ngFor="let item of allTransactions">
+              <mat-card>
+                <div class="content">
+                  <h5>{{ item.Consumer.Name }}</h5>
+                  <p class="event">₹{{ item.OrderDetails.TotalPrice }}</p>
+                </div>
+                <p>Order date : {{ item.OrderDetails.OrderDate }} </p>
+                <div class="lastLine">
+                  <p>Vendor name : {{ item.Retailer.Name }}</p>
+                  <p class="status" [ngClass]='setStatusColor(item.Status)'>{{ item.Status }}</p>
+                </div>
+              </mat-card>
+            </div>
+          </mat-card>
+    </div>
 </div>
+  

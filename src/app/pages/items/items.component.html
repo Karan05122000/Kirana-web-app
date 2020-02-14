@@ -1,6 +1,11 @@
 <div class="outer">
     <mat-card [ngClass]="{'is-side-panel-expanded': isSidePanelExpanded}">
-        <h1>Items!</h1>
+        <h2>Items:</h2>
+        <div class="item-cards" *ngFor="let item of items">
+            <mat-card class="inner-item-mat-card">
+                <app-item-card  [item]="item"></app-item-card>
+            </mat-card>
+        </div>
     </mat-card>
 </div>
 

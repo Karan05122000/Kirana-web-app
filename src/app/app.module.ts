@@ -8,8 +8,12 @@ import {
   MatIconModule,
   MatCardModule,
   MatMenuModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule
 } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
@@ -25,6 +29,11 @@ import { TransactionsComponent } from './pages/transactions/transactions.compone
 import { LoginComponent } from './pages/login/login.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
+import { AnalyticContainerComponent } from './components/analytic-container/analytic-container.component';
+import { RecentOrdersComponent } from './components/recent-orders/recent-orders.component';
+import { HttpClientModule } from '@angular/common/http';
+import { InviteRequestComponent } from './components/invite-request/invite-request.component';
+import { ItemCardComponent } from './components/item-card/item-card.component';
 
 
 @NgModule({
@@ -36,12 +45,18 @@ import {MatDividerModule} from '@angular/material/divider';
     RetailerComponent,
     ItemsComponent,
     TransactionsComponent,
-    LoginComponent
+    LoginComponent,
+    AnalyticContainerComponent,
+    RecentOrdersComponent,
+    InviteRequestComponent,
+    ItemCardComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
@@ -51,7 +66,10 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSnackBarModule,
     MatToolbarModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
