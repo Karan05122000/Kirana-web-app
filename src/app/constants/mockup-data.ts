@@ -44,6 +44,28 @@ export const transactions = [
             TotalPrice: 600
         },
         Status: Status.CANCELLED
+    },
+    {
+        Consumer: {
+            Name: 'Vijay',
+            Area: 'HSR layout'
+        },
+        Retailer: {
+            Name: 'Nishanth',
+            Area: 'JP nagar'
+        },
+        OrderDetails: {
+            OrderDate: '22-01-2020',
+            ItemsPurchased: [
+                {
+                    ItemName: 'Sample Item2',
+                    ItemPrice: 300,
+                    Quantity: 2,
+                }
+            ],
+            TotalPrice: 600
+        },
+        Status: Status.CANCELLED
     }
 ];
 
