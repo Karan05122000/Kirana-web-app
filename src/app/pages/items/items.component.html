@@ -1,7 +1,10 @@
 <div class="outer">
     <mat-card [ngClass]="{'is-side-panel-expanded': isSidePanelExpanded}">
         <h2>Items:</h2>
-        <div class="item-cards" *ngFor="let item of items">
+        <div>
+            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for item ">
+        </div>
+        <div class="item-cards" *ngFor="let item of items |filter:searchText">
             <mat-card class="inner-item-mat-card">
                 <app-item-card  [item]="item"></app-item-card>
             </mat-card>

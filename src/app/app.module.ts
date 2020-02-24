@@ -34,6 +34,7 @@ import { RecentOrdersComponent } from './components/recent-orders/recent-orders.
 import { HttpClientModule } from '@angular/common/http';
 import { InviteRequestComponent } from './components/invite-request/invite-request.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { ItemCardComponent } from './components/item-card/item-card.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

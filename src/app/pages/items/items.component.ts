@@ -9,6 +9,7 @@ import { InteractionService } from 'src/app/services/interaction.service';
 })
 export class ItemsComponent implements OnInit {
   isSidePanelExpanded: boolean;
+  searchText;
   items: { name: string; unit: string; description: string; variety: string[]; }[];
 
   constructor(private interaction: InteractionService) {

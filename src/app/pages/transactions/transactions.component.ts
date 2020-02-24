@@ -19,15 +19,17 @@ import {
 })
 export class TransactionsComponent implements OnInit {
 
+  searchRetail;
   taskTotal = 10;
   taskRemaining = 0;
-  foods = [{
+  foods = [
+    {
       value: 'retailer-1',
-      viewValue: 'George'
+      viewValue: 'Pranav'
     },
     {
       value: 'retailer-2',
-      viewValue: 'Lucas'
+      viewValue: 'Vijay'
     },
     {
       value: 'retailer-3',
@@ -43,14 +45,23 @@ export class TransactionsComponent implements OnInit {
   // tslint:disable-next-line: max-line-length
   allTransactions: {
     Consumer: {
-      Name: string; Area: string;
-    }; Retailer: {
-      Name: string; Area: string;
-    }; OrderDetails: {
-      OrderDate: string; ItemsPurchased: {
-        ItemName: string; ItemPrice: number; Quantity: number;
-      } []; TotalPrice: number;
-    }; Status: string;
+      Name: string; 
+      Area: string;
+    }; 
+    Retailer: {
+      Name: string; 
+      Area: string;
+    };
+    OrderDetails: {
+      OrderDate: string; 
+      ItemsPurchased: {
+        ItemName: string; 
+        ItemPrice: number; 
+        Quantity: number;
+      } []; 
+      TotalPrice: number;
+    };
+    Status: string;
   } [];
 
   constructor(private interaction: InteractionService, private transaction: TransactionService) {
