@@ -8,10 +8,32 @@
               </div>
               <div class="filter-container">
                 <div class="filter">
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Retailer</mat-label>
+                      <mat-select [(ngModel)]="searchRetail">
+                        <mat-option *ngFor="let food of foods" [value]="food.viewValue">
+                          {{food.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div>
                   <mat-form-field>
-                    <mat-label class="first">Retailer</mat-label>
-                    <mat-select [(ngModel)]="searchRetail">
-                      <mat-option *ngFor="let food of foods" [value]="food.value">
+                    <mat-label>Status</mat-label>
+                    <mat-select [(ngModel)]="searchStatus">
+                      <mat-option *ngFor="let item of status" [value]="item.viewValue">
+                        {{item.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field>
+                    <mat-label>Date</mat-label>
+                    <mat-select [(ngModel)]="searchDate">
+                      <mat-option *ngFor="let food of foods" [value]="food.viewValue">
                         {{food.viewValue}}
                       </mat-option>
                     </mat-select>
@@ -32,7 +54,7 @@
                 </div>
             </div>
             <mat-divider></mat-divider>
-            <div class="transaction-container" *ngFor="let item of allTransactions| filter:searchRetail">
+            <div class="transaction-container" *ngFor="let item of allTransactions| filter:searchRetail | filter:searchStatus">
                   <mat-card>
                     <div class="content">
                       <h5>{{ item.Consumer.Name }}</h5>

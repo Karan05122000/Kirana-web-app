@@ -1,3 +1,4 @@
+
 import { OnChanges } from '@angular/core';
 // import { Component, OnInit } from '@angular/core';
 // import { InteractionService } from 'src/app/services/interaction.service';
@@ -21,6 +22,8 @@ import {
 export class TransactionsComponent implements OnInit,OnChanges{
 
   searchRetail:any;
+  searchStatus:any;
+  searchDate:any;
   taskTotal = 10;
   taskRemaining = 0;
   foods = [
@@ -35,6 +38,28 @@ export class TransactionsComponent implements OnInit,OnChanges{
     {
       value: 'retailer-3',
       viewValue: 'Rebecca'
+    }
+  ];
+  status = [
+    {
+      value: 'status-1',
+      viewValue: 'Delivered'
+    },
+    {
+      value: 'status-2',
+      viewValue: 'Ordered'
+    },
+    {
+      value: 'status-3',
+      viewValue: 'Packed'
+    },
+    {
+      value: 'status-4',
+      viewValue: 'Cancelled'
+    },
+    {
+      value: 'status-5',
+      viewValue: 'Dispatched'
     }
   ];
   today = Date.now();
@@ -87,6 +112,8 @@ export class TransactionsComponent implements OnInit,OnChanges{
     this.transaction.getAllOrders().subscribe((res) => {
     });
   }
+
+  
 
   setStatusColor(status) {
     return status;
