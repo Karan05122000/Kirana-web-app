@@ -85,6 +85,7 @@ export class TransactionsComponent implements OnInit,OnChanges{
   getTransactionHistory() {
     this.allTransactions = this.transaction.getAllTransactions();
     this.transaction.getAllOrders().subscribe((res) => {
+      console.log(res);
     });
   }
 
