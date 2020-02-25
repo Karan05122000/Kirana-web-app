@@ -7,10 +7,10 @@
                 <p>{{taskRemaining}} out of {{taskTotal}}</p>
               </div>
               <div class="filter-container">
-                <div class="filter" *ngFor="let item of filters">
+                <div class="filter">
                   <mat-form-field>
-                    <mat-label class="first">{{item}}</mat-label>
-                    <mat-select>
+                    <mat-label class="first">Retailer</mat-label>
+                    <mat-select [(ngModel)]="searchRetail">
                       <mat-option *ngFor="let food of foods" [value]="food.value">
                         {{food.viewValue}}
                       </mat-option>
@@ -32,18 +32,18 @@
                 </div>
             </div>
             <mat-divider></mat-divider>
-            <div class="transaction-container" *ngFor="let item of allTransactions">
-              <mat-card>
-                <div class="content">
-                  <h5>{{ item.Consumer.Name }}</h5>
-                  <p class="event">₹{{ item.OrderDetails.TotalPrice }}</p>
-                </div>
-                <p>Order date : {{ item.OrderDetails.OrderDate }} </p>
-                <div class="lastLine">
-                  <p>Vendor name : {{ item.Retailer.Name }}</p>
-                  <p class="status" [ngClass]='setStatusColor(item.Status)'>{{ item.Status }}</p>
-                </div>
-              </mat-card>
+            <div class="transaction-container" *ngFor="let item of allTransactions| filter:searchRetail">
+                  <mat-card>
+                    <div class="content">
+                      <h5>{{ item.Consumer.Name }}</h5>
+                      <p class="event">₹{{ item.OrderDetails.TotalPrice }}</p>
+                    </div>
+                    <p>Order date : {{ item.OrderDetails.OrderDate }} </p>
+                    <div class="lastLine">
+                      <p>Vendor name : {{ item.Retailer.Name }}</p>
+                      <p class="status" [ngClass]='setStatusColor(item.Status)'>{{ item.Status }}</p>
+                    </div>
+                  </mat-card>
             </div>
           </mat-card>
     </div>

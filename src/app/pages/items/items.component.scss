@@ -1,8 +1,14 @@
 .outer {
     height: 90vh;
-  overflow: scroll;
+    overflow: scroll;
   .mat-card {
     margin: 50px 2% 0px 2%;
+    .input{
+      margin-left: 325px;
+      .form-control{
+        width: 500px;
+      }        
+    }
     .item-cards {
       .inner-item-mat-card {
         margin: 20px;

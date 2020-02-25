@@ -1,3 +1,4 @@
+import { OnChanges } from '@angular/core';
 // import { Component, OnInit } from '@angular/core';
 // import { InteractionService } from 'src/app/services/interaction.service';
 
@@ -17,9 +18,9 @@ import {
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
 })
-export class TransactionsComponent implements OnInit {
+export class TransactionsComponent implements OnInit,OnChanges{
 
-  searchRetail;
+  searchRetail:any;
   taskTotal = 10;
   taskRemaining = 0;
   foods = [
@@ -74,6 +75,11 @@ export class TransactionsComponent implements OnInit {
       this.isSidePanelExpanded = res;
     });
     this.getTransactionHistory();
+  }
+
+  ngOnChanges() {
+    console.log(this.searchRetail);
+
   }
 
   getTransactionHistory() {

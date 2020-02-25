@@ -12,6 +12,7 @@ import {
   MatTableModule,
   MatPaginatorModule,
   MatSortModule
+  
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
