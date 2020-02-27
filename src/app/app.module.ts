@@ -11,12 +11,14 @@ import {
   MatSnackBarModule,
   MatTableModule,
   MatPaginatorModule,
-  MatSortModule
-  
+  MatSortModule,
+  MatNativeDateModule,
+  MAT_DATE_LOCALE
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -36,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InviteRequestComponent } from './components/invite-request/invite-request.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AnalyticContainerComponent,
     RecentOrdersComponent,
     InviteRequestComponent,
-    ItemCardComponent
+    ItemCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,8 +75,13 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatPaginatorModule,
     MatSortModule,
     Ng2SearchPipeModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

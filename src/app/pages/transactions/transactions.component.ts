@@ -13,6 +13,9 @@ import {
 import {
   TransactionService
 } from 'src/app/services/transaction.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { formatDate } from '@angular/common';
+import { MatDatepickerInputEvent } from '@angular/material';
 
 @Component({
   selector: 'app-transactions',
@@ -23,6 +26,7 @@ export class TransactionsComponent implements OnInit,OnChanges{
 
   searchRetail:any;
   searchStatus:any;
+  searchDate1:any;
   searchDate:any;
   taskTotal = 10;
   taskRemaining = 0;
@@ -100,11 +104,18 @@ export class TransactionsComponent implements OnInit,OnChanges{
       this.isSidePanelExpanded = res;
     });
     this.getTransactionHistory();
+
+    console.log(this.searchDate);
   }
 
   ngOnChanges() {
-    console.log(this.searchRetail);
+    console.log(this.searchDate);
 
+  }
+
+  addEvent(type : string, event: MatDatepickerInputEvent<Date>){
+    this.searchDate1 = (`${type}:${event.value.toLocaleDateString()}`);
+    this.searchDate=this.searchDate1.slice(6,16);
   }
 
   getTransactionHistory() {
@@ -113,7 +124,6 @@ export class TransactionsComponent implements OnInit,OnChanges{
     });
   }
 
-  
 
   setStatusColor(status) {
     return status;

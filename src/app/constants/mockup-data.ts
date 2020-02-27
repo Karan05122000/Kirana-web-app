@@ -11,7 +11,7 @@ export const transactions = [
             Area: 'JP nagar'
         },
         OrderDetails: {
-            OrderDate: '20-01-2020',
+            OrderDate: '20/01/2020',
             ItemsPurchased: [
                 {
                     ItemName: 'Sample Item',
@@ -33,7 +33,7 @@ export const transactions = [
             Area: 'JP nagar'
         },
         OrderDetails: {
-            OrderDate: '22-01-2020',
+            OrderDate: '22/01/2020',
             ItemsPurchased: [
                 {
                     ItemName: 'Sample Item2',
@@ -55,7 +55,7 @@ export const transactions = [
             Area: 'JP nagar'
         },
         OrderDetails: {
-            OrderDate: '22-01-2020',
+            OrderDate: '22/01/2020',
             ItemsPurchased: [
                 {
                     ItemName: 'Sample Item2',
@@ -65,7 +65,7 @@ export const transactions = [
             ],
             TotalPrice: 600
         },
-        Status: Status.CANCELLED
+        Status: Status.PACKED
     },
     {
         Consumer: {
@@ -77,7 +77,7 @@ export const transactions = [
             Area: 'JP nagar'
         },
         OrderDetails: {
-            OrderDate: '20-01-2020',
+            OrderDate: '20/01/2020',
             ItemsPurchased: [
                 {
                     ItemName: 'Sample Item',
@@ -87,7 +87,29 @@ export const transactions = [
             ],
             TotalPrice: 1000
         },
-        Status: Status.DELIVERED
+        Status: Status.DISPATCHED
+    },
+    {
+        Consumer: {
+            Name: 'Pranav',
+            Area: 'HSR layout'
+        },
+        Retailer: {
+            Name: 'Nishanth',
+            Area: 'JP nagar'
+        },
+        OrderDetails: {
+            OrderDate: '20/01/2020',
+            ItemsPurchased: [
+                {
+                    ItemName: 'Sample Item',
+                    ItemPrice: 500,
+                    Quantity: 2,
+                }
+            ],
+            TotalPrice: 1000
+        },
+        Status: Status.ORDERED
     }
 ];
 
