@@ -99,19 +99,13 @@ import { AddItemsComponent } from './components/add-items/add-items.component';
     MatSortModule,
     Ng2SearchPipeModule,
     MatDatepickerModule,
-<<<<<<< HEAD
     MatNativeDateModule,
     ReactiveFormsModule,
   ],
   providers: [
-    [AuthGuard],
+    [AuthGuard, FilterPipe],
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
   ],
-=======
-    MatNativeDateModule
-  ],
-  providers: [AuthGuard, FilterPipe],
->>>>>>> added feedback and add items modal
   bootstrap: [AppComponent]
 })
 export class AppModule {}
