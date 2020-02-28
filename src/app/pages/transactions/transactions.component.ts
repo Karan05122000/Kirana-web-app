@@ -22,7 +22,7 @@ import { MatDatepickerInputEvent } from '@angular/material';
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
 })
-export class TransactionsComponent implements OnInit,OnChanges{
+export class TransactionsComponent implements OnInit, OnChanges {
 
   searchRetail:any;
   searchStatus:any;
@@ -75,7 +75,7 @@ export class TransactionsComponent implements OnInit,OnChanges{
   // tslint:disable-next-line: max-line-length
   allTransactions: {
     Consumer: {
-      Name: string; 
+      Name: string;
       Area: string;
     }; 
     Retailer: {
