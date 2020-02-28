@@ -11,10 +11,11 @@ import {
   MatSnackBarModule,
   MatTableModule,
   MatPaginatorModule,
-  MatSortModule
-  
+  MatSortModule,
+  MatDialogModule,
+
 } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
@@ -28,6 +29,7 @@ import { RetailerComponent } from './pages/retailer/retailer.component';
 import { ItemsComponent } from './pages/items/items.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './guards/auth/auth.guard';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 import { AnalyticContainerComponent } from './components/analytic-container/analytic-container.component';
@@ -36,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InviteRequestComponent } from './components/invite-request/invite-request.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -51,15 +53,21 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AnalyticContainerComponent,
     RecentOrdersComponent,
     InviteRequestComponent,
-    ItemCardComponent
+    ItemCardComponent,
+    DialogComponent,
+  ],
+  entryComponents: [
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
@@ -74,7 +82,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatSortModule,
     Ng2SearchPipeModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

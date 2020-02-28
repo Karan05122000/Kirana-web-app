@@ -1,12 +1,14 @@
+import { DialogComponent } from './../../components/dialog/dialog.component';
 import { Orders } from './../../constants/mockup-data';
 import { Status } from './../../models/models';
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, Inject} from '@angular/core';
 import { InteractionService } from 'src/app/services/interaction.service';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatDialog} from '@angular/material/dialog';
 
-export interface PeriodicElement {
+export interface Order {
   consumer: string;
   shop: string;
   phone: number;
@@ -20,7 +22,7 @@ interface StatusMenu {
   viewValue: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = Orders;
+const ELEMENT_DATA: Order[] = Orders;
 
 
 @Component({
@@ -44,7 +46,7 @@ export class RecentOrdersComponent implements OnInit {
     {value: Status.PACKED, viewValue: Status.PACKED}
   ];
 
-  constructor(private interaction: InteractionService) {
+  constructor(private interaction: InteractionService, public dialog: MatDialog) {
     this.isSidePanelExpanded = this.interaction.getExpandedStatus();
   }
 
@@ -59,5 +61,23 @@ export class RecentOrdersComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-}
+  onStatusChange(event: any) {
+    this.openDialog(event.value);
+  }
 
+  openDialog(status: any): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '300px',
+      data: {statusValue: status}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if ( result === 'YES' ) {
+        
+      } else {
+
+      }
+    });
+  }
+
+}

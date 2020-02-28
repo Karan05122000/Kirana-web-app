@@ -10,6 +10,8 @@ export const environment = {
   orders: 'order',
   retailers: 'vendors',
   products: 'products',
+  signUpURL: 'user/signUp',
+  loginURL: '/login',
 
 };
 

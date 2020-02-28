@@ -11,7 +11,7 @@
                   <mat-form-field>
                     <mat-label class="first">Retailer</mat-label>
                     <mat-select [(ngModel)]="searchRetail">
-                      <mat-option *ngFor="let food of foods" [value]="food.value">
+                      <mat-option *ngFor="let food of foods" [value]="food.viewValue">
                         {{food.viewValue}}
                       </mat-option>
                     </mat-select>
