@@ -23,7 +23,7 @@ export class TransactionsComponent implements OnInit, OnChanges {
   searchRetail: any;
   taskTotal = 10;
   taskRemaining = 0;
-  foods = [
+  retailers = [
     {
       value: 'retailer-1',
       viewValue: 'Pranav'

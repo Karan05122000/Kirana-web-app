@@ -6,6 +6,7 @@ import { ItemsComponent } from './pages/items/items.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { FeedbacksComponent } from './pages/feedbacks/feedbacks.component';
 
 const routes: Routes = [
   {
@@ -20,8 +21,8 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    // canActivate: [AuthGuard],
-    // data: { roles: ['admin'] }
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
   },
   {
     path: 'retailer',
@@ -36,6 +37,11 @@ const routes: Routes = [
   {
     path: 'transactions',
     component: TransactionsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'feedbacks',
+    component: FeedbacksComponent,
     canActivate: [AuthGuard],
   }
 ];

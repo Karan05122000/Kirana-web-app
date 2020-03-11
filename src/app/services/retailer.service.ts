@@ -1,20 +1,15 @@
 import { Injectable } from '@angular/core';
-import { transactions } from '../constants/mockup-data';
-import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs/internal/observable/throwError';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class TransactionService {
-  getAllTransactionsURL: any;
-  httpOptions;
-  buildURLS() {
-    this.getAllTransactionsURL = environment.backend_end_point + environment.retailers;
-  }
+export class RetailerService {
+  getAllRetailerURL: string;
+  httpOptions: any;
 
   constructor(private http: HttpClient) {
     const token = localStorage.getItem('access');
@@ -22,8 +17,12 @@ export class TransactionService {
     this.buildURLS();
   }
 
-  getAllOrders() {
-    return this.http.get(this.getAllTransactionsURL,  {
+  buildURLS() {
+    this.getAllRetailerURL = environment.backend_end_point + environment.retailers;
+  }
+
+  getAllRetailers() {
+    return this.http.get(this.getAllRetailerURL,  {
       headers: this.httpOptions,
       observe: 'response'
     })
@@ -32,9 +31,5 @@ export class TransactionService {
         return throwError(error);
       })
     );
-  }
-
-  getAllTransactions() {
-    return transactions;
   }
 }
