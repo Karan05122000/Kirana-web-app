@@ -1,5 +1,7 @@
+import { FilterPipe } from './pipes/filter.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 
 import {
   MatButtonModule,
@@ -15,9 +17,12 @@ import {
   MatNativeDateModule,
   MAT_DATE_LOCALE,
   MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RatingModule } from 'ng-starrating';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -28,6 +33,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidePanelComponent } from './components/side-panel/side-panel.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DialogAddItemComponent } from './components/add-items/add-items.component';
 import { RetailerComponent } from './pages/retailer/retailer.component';
 import { ItemsComponent } from './pages/items/items.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
@@ -42,6 +48,9 @@ import { InviteRequestComponent } from './components/invite-request/invite-reque
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { FeedbacksComponent } from './pages/feedbacks/feedbacks.component';
+import { FeedbackCardComponent } from './components/feedback-card/feedback-card.component';
+import { AddItemsComponent } from './components/add-items/add-items.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +67,10 @@ import { DialogComponent } from './components/dialog/dialog.component';
     InviteRequestComponent,
     ItemCardComponent,
     DialogComponent,
+    DialogAddItemComponent,
+    FeedbacksComponent,
+    FeedbackCardComponent,
+    AddItemsComponent,
   ],
   entryComponents: [
     DialogComponent
@@ -68,6 +81,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    RatingModule,
     HttpClientModule,
     MatButtonModule,
     MatDialogModule,
@@ -85,6 +99,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatSortModule,
     Ng2SearchPipeModule,
     MatDatepickerModule,
+<<<<<<< HEAD
     MatNativeDateModule,
     ReactiveFormsModule,
   ],
@@ -92,6 +107,11 @@ import { DialogComponent } from './components/dialog/dialog.component';
     [AuthGuard],
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
   ],
+=======
+    MatNativeDateModule
+  ],
+  providers: [AuthGuard, FilterPipe],
+>>>>>>> added feedback and add items modal
   bootstrap: [AppComponent]
 })
 export class AppModule {}

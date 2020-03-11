@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "kirana-web-app"
+    }
+  },
+  "defaultProject": "kirana-web-app",
+  "cli": {
+    "analytics": false
+  }
 }
