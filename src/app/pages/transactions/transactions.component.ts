@@ -1,3 +1,4 @@
+
 import { OnChanges } from '@angular/core';
 // import { Component, OnInit } from '@angular/core';
 // import { InteractionService } from 'src/app/services/interaction.service';
@@ -12,6 +13,9 @@ import {
 import {
   TransactionService
 } from 'src/app/services/transaction.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { formatDate } from '@angular/common';
+import { MatDatepickerInputEvent } from '@angular/material';
 
 @Component({
   selector: 'app-transactions',
@@ -21,6 +25,9 @@ import {
 export class TransactionsComponent implements OnInit,OnChanges{
 
   searchRetail:any;
+  searchStatus:any;
+  searchDate1:any;
+  searchDate:any;
   taskTotal = 10;
   taskRemaining = 0;
   foods = [
@@ -35,6 +42,28 @@ export class TransactionsComponent implements OnInit,OnChanges{
     {
       value: 'retailer-3',
       viewValue: 'Rebecca'
+    }
+  ];
+  status = [
+    {
+      value: 'status-1',
+      viewValue: 'Delivered'
+    },
+    {
+      value: 'status-2',
+      viewValue: 'Ordered'
+    },
+    {
+      value: 'status-3',
+      viewValue: 'Packed'
+    },
+    {
+      value: 'status-4',
+      viewValue: 'Cancelled'
+    },
+    {
+      value: 'status-5',
+      viewValue: 'Dispatched'
     }
   ];
   today = Date.now();
@@ -75,11 +104,18 @@ export class TransactionsComponent implements OnInit,OnChanges{
       this.isSidePanelExpanded = res;
     });
     this.getTransactionHistory();
+
+    console.log(this.searchDate);
   }
 
   ngOnChanges() {
-    console.log(this.searchRetail);
+    console.log(this.searchDate);
 
+  }
+
+  addEvent(type : string, event: MatDatepickerInputEvent<Date>){
+    this.searchDate1 = (`${type}:${event.value.toLocaleDateString()}`);
+    this.searchDate=this.searchDate1.slice(6,16);
   }
 
   getTransactionHistory() {
@@ -88,6 +124,7 @@ export class TransactionsComponent implements OnInit,OnChanges{
       console.log(res);
     });
   }
+
 
   setStatusColor(status) {
     return status;
