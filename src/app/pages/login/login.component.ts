@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
   btnInfo = 'Register if first time login';
   registerBtn = 'Register';
   loginBtn = 'Sign in';
+  hide = true;
 
   constructor(
     private authService: AuthService,
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit {
     // protected commonUtil: CommonUtil
   ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required,
+      username: ['', [Validators.required,
         Validators.email]],
       // password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$')]],
       password: ['', []],
@@ -82,10 +83,12 @@ export class LoginComponent implements OnInit {
       const data = Object.assign({}, this.loginForm.value);
       this.authService.login(data).subscribe(
         response => {
+          console.log(response.body);
           localStorage.setItem('userId', response.body['userId']);
           localStorage.setItem('userType', response.body['userType']);
           localStorage.setItem('emailId', response.body['emailId']);
-          localStorage.setItem('token', response.body['token']);
+          localStorage.setItem('refresh', response.body['refresh']);
+          localStorage.setItem('access', response.body['access']);
           localStorage.setItem('user', JSON.stringify(response.body));
           this.role = localStorage.getItem('userType');
           this.redirectToTeam();
@@ -102,7 +105,7 @@ export class LoginComponent implements OnInit {
 
   public registerClicked() {
     this.loginForm.patchValue({
-      email: '',
+      username: '',
       password: ''
     });
     this.isRegister = this.isRegister ? false : true;
@@ -142,7 +145,7 @@ export class LoginComponent implements OnInit {
 
   redirectToTeam() {
     if (this.authService.loggedIn()) {
-      console.log('logged in');
+      this.router.navigate(['/dashboard']);
     }
   }
 }

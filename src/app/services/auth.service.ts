@@ -9,9 +9,16 @@ import { throwError } from 'rxjs';
 })
 export class AuthService {
   public LoginData: any;
-  private httpOptions = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private httpOptions = new HttpHeaders({ 'Content-Type': 'application/json'});
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    // setInterval(() => {
+    //   console.log('called');
+    //   const refreshToken = localStorage.getItem('refresh');
+    //   this.refreshToken({refresh: refreshToken}).subscribe((res) => {
+    //     console.log(res);
+    //   }); }, 1000 * 60 * 0.1);
+  }
 
   signUp(data) {
     const url = environment.backend_end_point + environment.signUpURL;
@@ -28,8 +35,22 @@ export class AuthService {
       );
   }
 
+  refreshToken(data) {
+    const url = environment.backend_end_point + environment.refreshURL;
+    return this.http
+      .post(url, JSON.stringify(data), {
+        headers: this.httpOptions,
+        observe: 'response'
+      })
+      .pipe(
+        catchError(error => {
+          return throwError(error);
+        })
+      );
+  }
+
   login(data) {
-    const url = environment.backend_end_point + environment.loginURL;
+    const url = environment.backend_end_point + environment.tokenURL;
     return this.http
       .post(url, JSON.stringify(data), {
         headers: this.httpOptions,
@@ -69,7 +90,6 @@ export class AuthService {
   // }
 
   loggedIn() {
-    console.log('hi')
     return !!localStorage.getItem('user');
   }
 

@@ -22,7 +22,8 @@
                 }
             }
             .item-price {
-                align-self: center;
+                align-self: auto;
+                cursor: pointer;
             }
         }
         .item-detail-container {
