@@ -18,14 +18,12 @@ import {
   MAT_DATE_LOCALE,
   MatDialogModule,
   MatDatepickerModule,
-  MatNativeDateModule
 
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RatingModule } from 'ng-starrating';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { AppRoutingModule } from './app-routing.module';
 
