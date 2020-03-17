@@ -7,9 +7,14 @@ export const environment = {
   production: false,
   backend_end_point: 'http://54.197.216.47/',
   port_number: '8000',
-  orders: 'order',
-  retailers: 'vendors',
-  products: 'products',
+  userDetails: 'api/v1/userDetails/',
+  orders: 'order/',
+  retailers: 'api/v1/vendors/',
+  products: 'api/v1/products/',
+  signUpURL: 'user/signUp/',
+  loginURL: 'login/',
+  tokenURL: 'api/token/',
+  refreshURL: 'api/token/refresh',
 
 };
 

@@ -12,8 +12,8 @@
                     <mat-form-field>
                       <mat-label>Retailer</mat-label>
                       <mat-select [(ngModel)]="searchRetail">
-                        <mat-option *ngFor="let food of foods" [value]="food.viewValue">
-                          {{food.viewValue}}
+                        <mat-option *ngFor="let retailer of retailers" [value]="retailer.viewValue">
+                          {{retailer.viewValue}}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
@@ -30,14 +30,12 @@
                   </mat-form-field>
                 </div>
                 <div>
-                  <mat-form-field>
-                    <mat-label>Date</mat-label>
-                    <mat-select [(ngModel)]="searchDate">
-                      <mat-option *ngFor="let food of foods" [value]="food.viewValue">
-                        {{food.viewValue}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
+                    <mat-form-field>
+                      <mat-label>Pick a date</mat-label>
+                      <input matInput [matDatepicker]="picker" (dateInput)="addEvent('input',$event)" (dateChange)="addEvent('input',$event)">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
                 </div>
               </div>
               <mat-divider></mat-divider>
@@ -54,7 +52,7 @@
                 </div>
             </div>
             <mat-divider></mat-divider>
-            <div class="transaction-container" *ngFor="let item of allTransactions| filter:searchRetail | filter:searchStatus">
+            <div class="transaction-container" *ngFor="let item of allTransactions| filter:searchRetail|filter:searchStatus|filter:searchDate">
                   <mat-card>
                     <div class="content">
                       <h5>{{ item.Consumer.Name }}</h5>

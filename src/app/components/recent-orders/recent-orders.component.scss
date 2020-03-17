@@ -3,6 +3,9 @@ table {
     width: 100%;
     table-layout: fixed;
   }
+  .mat-elevation-z1 {
+    box-shadow: none !important;
+  }
   
   th, td, tr {
     overflow: hidden;
