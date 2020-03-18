@@ -57,6 +57,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { DatePipe } from '@angular/common';
+import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { DatePipe } from '@angular/common';
     SelectImageDialog,
     UpdateItemComponent,
     UpdateItemModal,
-    ShowInviteDetailModal
+    ShowInviteDetailModal,
+    ResetPassComponent,
   ],
   entryComponents: [
     DialogComponent
