@@ -49,6 +49,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { FeedbacksComponent } from './pages/feedbacks/feedbacks.component';
 import { FeedbackCardComponent } from './components/feedback-card/feedback-card.component';
 import { AddItemsComponent } from './components/add-items/add-items.component';
+import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { AddItemsComponent } from './components/add-items/add-items.component';
     FeedbacksComponent,
     FeedbackCardComponent,
     AddItemsComponent,
+    ResetPassComponent,
   ],
   entryComponents: [
     DialogComponent
