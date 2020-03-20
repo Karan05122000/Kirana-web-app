@@ -7,12 +7,12 @@
             <a class="cursorPointer" [matMenuTriggerFor]="menu"><i class="fa fa-cog" aria-hidden="true"></i></a>
           <mat-menu #menu="matMenu">
             <button (click)="ResetPass()"mat-menu-item>
-              <mat-icon>done</mat-icon>
+              <i class="fa fa-key"></i>
               <span>Reset Password</span>
             </button>
-            <button mat-menu-item>
-              <mat-icon>more_horiz</mat-icon>
-              <span>Notification</span>
+            <button (click)="NotifySetting()" mat-menu-item>
+              <i class="fa fa-envelope"></i>
+              <span>Notifications</span>
             </button>
           </mat-menu>
             <a class="cursorPointer" id="feedback" (click)="feedbacks()"><i class="fa fa-comments-o" aria-hidden="true"></i></a>

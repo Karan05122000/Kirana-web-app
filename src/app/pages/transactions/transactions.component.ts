@@ -69,7 +69,7 @@ export class TransactionsComponent implements OnInit, OnChanges {
   today = Date.now();
   daysOfTheWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   dateNumber = 0;
-
+  model: any = {};
   filters: string[];
   isSidePanelExpanded: boolean;
   // tslint:disable-next-line: max-line-length
@@ -77,18 +77,18 @@ export class TransactionsComponent implements OnInit, OnChanges {
     Consumer: {
       Name: string;
       Area: string;
-    }; 
+    };
     Retailer: {
-      Name: string; 
+      Name: string;
       Area: string;
     };
     OrderDetails: {
-      OrderDate: string; 
+      OrderDate: string;
       ItemsPurchased: {
-        ItemName: string; 
-        ItemPrice: number; 
+        ItemName: string;
+        ItemPrice: number;
         Quantity: number;
-      } []; 
+      } [];
       TotalPrice: number;
     };
     Status: string;
@@ -113,9 +113,9 @@ export class TransactionsComponent implements OnInit, OnChanges {
 
   }
 
-  addEvent(type : string, event: MatDatepickerInputEvent<Date>){
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>){
     this.searchDate1 = (`${type}:${event.value.toLocaleDateString()}`);
-    this.searchDate=this.searchDate1.slice(6,16);
+    this.searchDate = this.searchDate1.slice(6, 16);
   }
 
   getTransactionHistory() {
@@ -125,9 +125,11 @@ export class TransactionsComponent implements OnInit, OnChanges {
     });
   }
 
-
   setStatusColor(status) {
     return status;
   }
-
+  // reset() {
+  //   this.model.searchRetail = '';
+  //   this.model.searchStatus = '';
+  // }
 }

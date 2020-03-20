@@ -50,6 +50,10 @@ import { FeedbacksComponent } from './pages/feedbacks/feedbacks.component';
 import { FeedbackCardComponent } from './components/feedback-card/feedback-card.component';
 import { AddItemsComponent } from './components/add-items/add-items.component';
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
+import { MatSliderModule } from '@angular/material/slider';
+import {StarRatingModule} from 'angular-star-rating';
+import { NotificationComponent } from './components/notification/notification.component';
+import { ProductsService } from './services/products.service';
 
 @NgModule({
   declarations: [
@@ -71,6 +75,7 @@ import { ResetPassComponent } from './components/reset-pass/reset-pass.component
     FeedbackCardComponent,
     AddItemsComponent,
     ResetPassComponent,
+    NotificationComponent,
   ],
   entryComponents: [
     DialogComponent
@@ -101,8 +106,10 @@ import { ResetPassComponent } from './components/reset-pass/reset-pass.component
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    MatSliderModule
   ],
   providers: [
+    ProductsService,
     [AuthGuard, FilterPipe],
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
   ],

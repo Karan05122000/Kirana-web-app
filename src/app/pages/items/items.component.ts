@@ -11,6 +11,7 @@ import {
 import {
   InteractionService
 } from 'src/app/services/interaction.service';
+import { _Items } from './../../models/models';
 
 @Component({
   selector: 'app-items',
@@ -20,9 +21,10 @@ import {
 export class ItemsComponent implements OnInit {
   isSidePanelExpanded: boolean;
   searchText;
-  items: {
-    name: string;unit: string;description: string;variety: string[];
-  } [];
+  items: _Items[];
+  // items: {
+  //   name: string; unit: string; description: string; variety: string[];
+  // } [];
   allProducts: any;
 
   constructor(private interaction: InteractionService, private productService: ProductsService) {
@@ -48,7 +50,13 @@ export class ItemsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.items = Items;
+    // this.items = Items;
+    this.productService.getAllItems()
+    .subscribe(
+      data => {
+        this.items = data;
+      }
+    );
     this.interaction.expandedStatus$.subscribe((res) => {
       this.isSidePanelExpanded = res;
     });

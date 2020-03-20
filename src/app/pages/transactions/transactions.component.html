@@ -12,9 +12,10 @@
                     <mat-form-field>
                       <mat-label>Retailer</mat-label>
                       <mat-select [(ngModel)]="searchRetail">
-                        <mat-option *ngFor="let retailer of retailers" [value]="retailer.viewValue">
+                        <mat-option *ngFor="let retailer of retailers" [value]="retailer.viewValue" >
                           {{retailer.viewValue}}
                         </mat-option>
+
                       </mat-select>
                     </mat-form-field>
                   </div>
@@ -36,6 +37,9 @@
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
+                </div>
+                <div>
+                  <button type="reset" class="btn btn-primary">Reset</button>
                 </div>
               </div>
               <mat-divider></mat-divider>
@@ -68,4 +72,3 @@
           </mat-card>
     </div>
 </div>
-  
