@@ -68,7 +68,13 @@ export class ItemsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.items = Items;
+    // this.items = Items;
+    this.productService.getAllItems()
+    .subscribe(
+      data => {
+        this.items = data;
+      }
+    );
     this.interaction.expandedStatus$.subscribe((res) => {
       this.isSidePanelExpanded = res;
     });

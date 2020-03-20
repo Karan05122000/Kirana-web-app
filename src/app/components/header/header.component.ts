@@ -24,5 +24,8 @@ export class HeaderComponent implements OnInit {
   ResetPass() {
     this.router.navigate(['/reset-password']);
   }
+  NotifySetting() {
+    this.router.navigate(['/notifications']);
+  }
 
 }

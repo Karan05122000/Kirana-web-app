@@ -58,6 +58,9 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { DatePipe } from '@angular/common';
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { NotificationComponent } from './components/notification/notification.component';
+import { ProductsService } from './services/products.service';
 
 @NgModule({
   declarations: [
@@ -84,6 +87,7 @@ import { ResetPassComponent } from './components/reset-pass/reset-pass.component
     UpdateItemModal,
     ShowInviteDetailModal,
     ResetPassComponent,
+    NotificationComponent,
   ],
   entryComponents: [
     DialogComponent
@@ -118,8 +122,10 @@ import { ResetPassComponent } from './components/reset-pass/reset-pass.component
     InfiniteScrollModule,
     NgxSpinnerModule,
     ScrollingModule,
+    MatSliderModule
   ],
   providers: [
+    ProductsService,
     [AuthGuard, FilterPipe],
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
     SharedService,

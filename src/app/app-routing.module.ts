@@ -8,6 +8,7 @@ import { AuthGuard } from './guards/auth/auth.guard';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { FeedbacksComponent } from './pages/feedbacks/feedbacks.component';
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 const routes: Routes = [
   {
@@ -49,7 +50,13 @@ const routes: Routes = [
     path: 'reset-password',
     component: ResetPassComponent,
     canActivate: [AuthGuard],
-  }
+  },
+  {
+    path: 'notifications',
+    component: NotificationComponent,
+    canActivate: [AuthGuard],
+  },
+
 ];
 
 @NgModule({

@@ -35,5 +35,12 @@
       </div>
     </mat-card>
   <!-- </div> -->
+  <button class="my_class" (click)="clickEvent()"
+    [ngClass]="status ? 'success' : 'danger'">
+     Some content
+  </button>
+  <div *ngIf="status===true">
+    show this
+  </div>
 </div>
 

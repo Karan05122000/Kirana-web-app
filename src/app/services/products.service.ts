@@ -11,7 +11,7 @@ export class ProductsService {
   productsURL: string;
   imageUploadURL: string;
   httpOptions: any;
-
+  tempURL: string;
   constructor(private http: HttpClient) {
     const token = localStorage.getItem("access");
     this.httpOptions = new HttpHeaders({
@@ -39,7 +39,6 @@ export class ProductsService {
         })
       );
   }
-
   addProduct(data) {
     return this.http
       .post(this.productsURL, JSON.stringify(data), {

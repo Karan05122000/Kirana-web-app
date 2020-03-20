@@ -48,4 +48,8 @@ export class ResetPassComponent {
     this.snackBar.open(this.message, this.actionButtonLabel);
     this.form1.reset();
   }
+  status: boolean = false;
+  clickEvent() {
+      this.status = !this.status;
+  }
 }
