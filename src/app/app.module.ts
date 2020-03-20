@@ -49,6 +49,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { FeedbacksComponent } from './pages/feedbacks/feedbacks.component';
 import { FeedbackCardComponent } from './components/feedback-card/feedback-card.component';
 import { AddItemsComponent } from './components/add-items/add-items.component';
+import { SharedService } from './services/shared.service';
+
 
 @NgModule({
   declarations: [
@@ -103,6 +105,7 @@ import { AddItemsComponent } from './components/add-items/add-items.component';
   providers: [
     [AuthGuard, FilterPipe],
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
+    SharedService
   ],
   bootstrap: [AppComponent]
 })
