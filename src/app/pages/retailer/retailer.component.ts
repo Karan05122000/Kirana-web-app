@@ -34,7 +34,7 @@ const ELEMENT_DATA: Retailer[] = [
 })
 export class RetailerComponent implements OnInit {
   isSidePanelExpanded: boolean;
-  displayedColumns: string[] = ['name', 'email', 'phone', 'shop', 'totalBusiness', 'recentActivity'];
+  displayedColumns: string[] = ['name', 'email', 'phone', 'shop', 'totalBusiness', 'location'];
   dataSource;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -47,9 +47,10 @@ export class RetailerComponent implements OnInit {
     this.isSidePanelExpanded = this.interaction.getExpandedStatus();
     this.retailerService.getAllRetailers().subscribe((res) => {
       console.log(res);
-      this.allRetailers = res;
+      this.allRetailers = res.body;
+      console.log(this.allRetailers);
     });
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+    this.dataSource = new MatTableDataSource();
     this.sharedService.comp1Val="";
   }
 
@@ -65,7 +66,7 @@ export class RetailerComponent implements OnInit {
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.allRetailers.filter = filterValue.trim().toLowerCase();
   }
   getRecord(selectRow:any){
     this.record=selectRow;
