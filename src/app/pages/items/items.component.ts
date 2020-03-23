@@ -52,7 +52,6 @@ export class ItemsComponent implements OnInit {
 
     return data;
   }
-
   addProduct() {
     this.productService.addProduct({
       image: "@/Users/vijayanand/Downloads/cult.png",
@@ -69,14 +68,20 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit() {
     // this.items = Items;
-    this.productService.getAllItems()
-    .subscribe(
-      data => {
-        this.items = data;
-      }
-    );
+    // this.productService.getAllItems()
+    // .subscribe(
+    //   data => {
+    //     this.items = data;
+    //  }
+    // );
+    this.productService.getAllProducts()
+      .subscribe( data => {
+          this.items = data;
+        }
+      );
     this.interaction.expandedStatus$.subscribe((res) => {
       this.isSidePanelExpanded = res;
     });
+
   }
 }

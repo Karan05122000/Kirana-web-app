@@ -156,6 +156,7 @@ export class SelectImageDialog {
 
       this.picUploadForm.get("image").setValue(file);
     }
+
   }
 
   onNoClick(): void {

@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class TransactionService {
   getAllTransactionsURL: any;
+  tempURL: any;
   httpOptions;
   buildURLS() {
     this.getAllTransactionsURL = environment.backend_end_point + environment.orders;

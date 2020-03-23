@@ -21,3 +21,22 @@ export class Transaction {
   customer_name: string;
   customer_phone: number;
 }
+export class DeleteItems {
+  category: string;
+  subCategory: string;
+  Brand: string;
+  name: string;
+  id: number;
+}
+// class Consumer {
+
+// }
+// class Retailer
+// class ItemsPurchased
+// class OrderDetails
+// export class Transactions {
+//   Consumer: Consumer;
+//   Retailer: Retailer;
+//   OrderDetails: OrderDetails;
+//   Status: string;
+// }
