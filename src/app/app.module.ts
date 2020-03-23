@@ -54,7 +54,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import {StarRatingModule} from 'angular-star-rating';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ProductsService } from './services/products.service';
-
+import { TransactionService } from './services/transaction.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,6 +110,7 @@ import { ProductsService } from './services/products.service';
   ],
   providers: [
     ProductsService,
+    TransactionService,
     [AuthGuard, FilterPipe],
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
   ],

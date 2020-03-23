@@ -1,8 +1,10 @@
+import { _Items, DeleteItems } from './../models/models';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { catchError } from 'rxjs/operators';
 import { throwError, Observable, pipe } from 'rxjs';
+import { ReturnStatement } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -19,18 +21,14 @@ export class ProductsService {
 
   buildURLS() {
     this.productsURL = environment.backend_end_point + environment.products;
-    this.tempURL = 'http://localhost:3000/Items';
   }
 
-  getAllItems(): Observable<any> {
-    return this.http.get(this.tempURL);
-  }
-
-  getAllProducts() {
-    return this.http.get(this.productsURL,  {
-      headers: this.httpOptions,
-      observe: 'response'
-    })
+  getAllProducts(): Observable<_Items[]> {
+    return this.http.get<_Items[]>(this.productsURL
+    //   headers: this.httpOptions,
+    //   observe: 'response'
+    // }
+    )
     .pipe(
       catchError(error => {
         return throwError(error);
@@ -42,6 +40,16 @@ export class ProductsService {
       headers: this.httpOptions,
       observe: 'response'
     })
+    .pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    );
+  }
+  deleteProduct(id: number): Observable<any> {
+    // return this.http.delete<DeleteItems>(this.productsURL)
+  console.log(this.productsURL + '?id=' + id);
+  return this.http.delete(this.productsURL + '?id=' + id, { responseType: 'text' })
     .pipe(
       catchError(error => {
         return throwError(error);

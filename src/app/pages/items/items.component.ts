@@ -1,3 +1,4 @@
+import { HttpHeaders, HttpClient, HttpClientModule } from '@angular/common/http';
 import {
   ProductsService
 } from './../../services/products.service';
@@ -34,7 +35,6 @@ export class ItemsComponent implements OnInit {
       console.log(res);
     });
   }
-
   addProduct() {
     this.productService.addProduct({
       image: '@/Users/vijayanand/Downloads/cult.png',
@@ -51,14 +51,20 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit() {
     // this.items = Items;
-    this.productService.getAllItems()
-    .subscribe(
-      data => {
-        this.items = data;
-      }
-    );
+    // this.productService.getAllItems()
+    // .subscribe(
+    //   data => {
+    //     this.items = data;
+    //  }
+    // );
+    this.productService.getAllProducts()
+      .subscribe( data => {
+          this.items = data;
+        }
+      );
     this.interaction.expandedStatus$.subscribe((res) => {
       this.isSidePanelExpanded = res;
     });
+
   }
 }

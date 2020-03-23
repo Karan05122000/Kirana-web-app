@@ -16,6 +16,7 @@ import {
 import { FormGroup, FormControl } from '@angular/forms';
 import { formatDate } from '@angular/common';
 import { MatDatepickerInputEvent } from '@angular/material';
+// import { Transactions } from './../../models/models';
 
 @Component({
   selector: 'app-transactions',
@@ -24,10 +25,10 @@ import { MatDatepickerInputEvent } from '@angular/material';
 })
 export class TransactionsComponent implements OnInit, OnChanges {
 
-  searchRetail:any;
-  searchStatus:any;
-  searchDate1:any;
-  searchDate:any;
+  searchRetail: any;
+  searchStatus: any;
+  searchDate1: any;
+  searchDate: any;
   taskTotal = 10;
   taskRemaining = 0;
   retailers = [
@@ -73,27 +74,27 @@ export class TransactionsComponent implements OnInit, OnChanges {
   filters: string[];
   isSidePanelExpanded: boolean;
   // tslint:disable-next-line: max-line-length
+  // allTransactions: Transactions[];
   allTransactions: {
     Consumer: {
       Name: string;
       Area: string;
-    };
+    }
     Retailer: {
       Name: string;
       Area: string;
-    };
+    }
     OrderDetails: {
       OrderDate: string;
       ItemsPurchased: {
         ItemName: string;
         ItemPrice: number;
         Quantity: number;
-      } [];
+      }[];
       TotalPrice: number;
-    };
-    Status: string;
-  } [];
-
+    }
+  Status: string;
+  }[];
   constructor(private interaction: InteractionService, private transaction: TransactionService) {
     this.filters = ['Retailer', 'Status', 'Date'];
     this.isSidePanelExpanded = this.interaction.getExpandedStatus();
@@ -113,7 +114,7 @@ export class TransactionsComponent implements OnInit, OnChanges {
 
   }
 
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>){
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.searchDate1 = (`${type}:${event.value.toLocaleDateString()}`);
     this.searchDate = this.searchDate1.slice(6, 16);
   }

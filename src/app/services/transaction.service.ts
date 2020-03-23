@@ -4,13 +4,14 @@ import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http'
 import { environment } from '../../environments/environment';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs/internal/observable/throwError';
-
+import { Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService {
   getAllTransactionsURL: any;
+  tempURL: any;
   httpOptions;
   buildURLS() {
     this.getAllTransactionsURL = environment.backend_end_point + environment.retailers;

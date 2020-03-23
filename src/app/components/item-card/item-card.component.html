@@ -9,12 +9,12 @@
                     <h4>{{ item.name }}</h4>
                 </div>
                 <div class="item-unit">
-                    <h6><b>{{ item.unit }}</b></h6>
+                    <h6><b>{{ item.category }}</b></h6>
                 </div>
             </div>
             <div class="item-price">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" let id = "item.index"(click)="clickMethod('name','id')">delete</mat-icon>
-            </div>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" let id = "{{item.id}}"(click)="clickMethod('item.id')">delete</mat-icon>
+              </div>
         </div>
         <div class="item-detail-container">
             <div class="item-description-container">
@@ -22,6 +22,7 @@
             </div>
             <div class="item-variety">
                 <h5>Variety:</h5>
+                <i id="edit" class="fa fa-edit"></i>
                 <ul>
                     <li *ngFor="let variety of item.variety">{{ variety }}</li>
                 </ul>
