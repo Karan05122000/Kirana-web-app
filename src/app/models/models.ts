@@ -40,3 +40,12 @@ export class DeleteItems {
 //   OrderDetails: OrderDetails;
 //   Status: string;
 // }
+export class Sent {
+  category: string;
+  sub_catogery: string;
+  details: string;
+  brand: string;
+  quantity_type: string;
+  name: string;
+  variants: string[];
+}

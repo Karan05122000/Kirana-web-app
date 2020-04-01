@@ -13,6 +13,7 @@ import {
 } from "@angular/forms";
 import { ProductsService } from "src/app/services/products.service";
 import { Router } from "@angular/router";
+import { Sent } from 'src/app/models/models';
 
 export interface DialogData {
   animal: string;
@@ -37,6 +38,7 @@ export class AddItemsComponent implements OnInit {
   ) {}
 
   openDialog(): void {
+    // tslint:disable-next-line: no-use-before-declare
     const dialogRef = this.dialog.open(DialogAddItemComponent, {
       width: "90%",
       maxWidth: "500px",
@@ -129,7 +131,8 @@ export class DialogAddItemComponent {
   isAddCategory: boolean;
   isAddSubCategory: boolean;
   isAddBrand: boolean;
-
+  newProduct = new Sent();
+  post: any;
   constructor(
     public dialogRef: MatDialogRef<DialogAddItemComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
