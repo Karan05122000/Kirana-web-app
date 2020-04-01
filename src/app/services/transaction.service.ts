@@ -13,7 +13,7 @@ export class TransactionService {
   getAllTransactionsURL: any;
   httpOptions;
   buildURLS() {
-    this.getAllTransactionsURL = environment.backend_end_point + environment.retailers;
+    this.getAllTransactionsURL = environment.backend_end_point + environment.orders;
   }
 
   constructor(private http: HttpClient) {
