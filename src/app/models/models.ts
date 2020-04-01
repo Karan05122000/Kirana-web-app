@@ -10,10 +10,13 @@ export class _Items  {
     id: number;
     name: string;
     unit: string;
-    description: string;
-    variety: string[];
+    details: string;
     price: string;
     category: string;
+    variant: string[];
+    sub_category: string[];
+    brand: string;
+
 }
 export class DeleteItems {
   category: string;
@@ -34,3 +37,12 @@ export class DeleteItems {
 //   OrderDetails: OrderDetails;
 //   Status: string;
 // }
+export class Sent {
+  category: string;
+  sub_catogery: string;
+  details: string;
+  brand: string;
+  quantity_type: string;
+  name: string;
+  variants: string[];
+}

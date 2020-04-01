@@ -1,7 +1,7 @@
+import { Sent } from './../../models/models';
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {FormControl, Validators, FormGroup} from '@angular/forms';
-
+import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 export interface DialogData {
   animal: string;
   name: string;
@@ -15,15 +15,14 @@ export interface DialogData {
 export class AddItemsComponent implements OnInit {
   animal: string;
   name: string;
-
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
+    // tslint:disable-next-line: no-use-before-declare
     const dialogRef = this.dialog.open(DialogAddItemComponent, {
       width: '350px',
       data: {name: this.name, animal: this.animal}
     });
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.animal = result;
@@ -47,13 +46,7 @@ export class DialogAddItemComponent {
   brandSelected;
   quantitySelected;
   variantSelected;
-  itemForm = new FormGroup({
-    categorySelected: new FormControl(null, Validators.required),
-    subCategorySelected: new FormControl(null, Validators.required),
-    brandSelected: new FormControl(null, Validators.required),
-    quantitySelected: new FormControl(),
-    variantSelected: new FormControl(),
-  });
+
 
   categories = [
     'Dairy',
@@ -93,11 +86,22 @@ export class DialogAddItemComponent {
   isAddCategory: boolean;
   isAddSubCategory: boolean;
   isAddBrand: boolean;
-
+  newProduct = new Sent();
+  post: any;
+  itemForm: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<DialogAddItemComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private fb: FormBuilder) {
       console.log(this.itemForm);
+      this.itemForm = fb.group({
+        categorySelected: new FormControl(null, Validators.required),
+        subCategorySelected: new FormControl(null, Validators.required),
+        brandSelected: new FormControl(null, Validators.required),
+        nameSelected: new FormControl(null, Validators.required),
+        quantitySelected: new FormControl(),
+        variantSelected: new FormControl(),
+        detailsSelected: new FormControl(),
+      });
     }
 
   onNoClick(): void {
@@ -113,9 +117,9 @@ export class DialogAddItemComponent {
   addBrand() {
     this.isAddBrand = this.isAddBrand ? false : true;
   }
-
-  addItem() {
-
+  // tslint:disable-next-line: variable-name
+  addItem(_post) {
+  this.newProduct.category = _post.category;
+  console.log(this.newProduct.category);
   }
-
 }

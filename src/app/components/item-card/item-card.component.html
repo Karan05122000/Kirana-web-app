@@ -7,24 +7,25 @@
             <div class="item-top-left">
                 <div class="item-name">
                     <h4>{{ item.name }}</h4>
+                    <h6>{{ item.id}}</h6>
                 </div>
                 <div class="item-unit">
                     <h6><b>{{ item.category }}</b></h6>
                 </div>
             </div>
             <div class="item-price">
-                <mat-icon aria-hidden="false" aria-label="Example home icon" let id = "{{item.id}}"(click)="clickMethod('item.id')">delete</mat-icon>
-              </div>
+                <mat-icon aria-hidden="false" aria-label="Example home icon" let i="item.id" (click)="clickMethod('i')">delete</mat-icon>
+            </div>
         </div>
         <div class="item-detail-container">
             <div class="item-description-container">
-                <p class="item-description">{{ item.description }}</p>
+                <p class="item-description">{{ item.details }}</p>
             </div>
             <div class="item-variety">
                 <h5>Variety:</h5>
-                <i id="edit" class="fa fa-edit"></i>
+                <i id="edit" class="fa fa-edit" ></i>
                 <ul>
-                    <li *ngFor="let variety of item.variety">{{ variety }}</li>
+                    <li *ngFor="let variety of item.variant">{{ variety }}</li>
                 </ul>
             </div>
         </div>

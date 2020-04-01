@@ -1,5 +1,5 @@
 import { InteractionService } from 'src/app/services/interaction.service';
-import { Component } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { OldPwdValidators } from './old-password.validators';
 import {
@@ -52,4 +52,13 @@ export class ResetPassComponent {
   clickEvent() {
       this.status = !this.status;
   }
+  // tslint:disable-next-line: member-ordering
+  // tslint:disable-next-line: member-ordering
+  value = '';
+  update(value: string) { this.value = value; }
+  // onChanges(): void {
+  //   console.log('MyForm > onChanges', this.form.value);
+  //   this.form.valueChanges.subscribe(value => {
+  //     this.formChange.emit(this.form);
+  //   });
 }

@@ -65,6 +65,5 @@ export class ItemsComponent implements OnInit {
     this.interaction.expandedStatus$.subscribe((res) => {
       this.isSidePanelExpanded = res;
     });
-
   }
 }

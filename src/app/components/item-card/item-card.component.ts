@@ -1,6 +1,5 @@
 import { ProductsService } from './../../services/products.service';
-import { _Items, DeleteItems } from './../../models/models';
-import { Items } from './../../constants/mockup-data';
+import { _Items } from './../../models/models';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -18,11 +17,7 @@ export class ItemCardComponent implements OnInit {
   }
   clickMethod(id: any) {
     if (confirm('Are you sure to delete this item')) {
-      // this.items.splice(id, 1);
-
-      console.log(this.id);
       this.productsService.deleteProduct(1);
     }
-
   }
 }
