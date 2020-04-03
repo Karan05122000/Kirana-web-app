@@ -1,16 +1,33 @@
 <div class="outer">
-    <mat-card [ngClass]="{'is-side-panel-expanded': isSidePanelExpanded}">
-        <h2>Items:</h2>
-        <div class="items-top-search-container">
-            <app-add-items></app-add-items>
-            <div class="input">
-                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for item by name ">
-            </div>
-        </div>      
-        <div class="item-cards" *ngFor="let item of items |filter:searchText">
-            <mat-card class="inner-item-mat-card">
-                <app-item-card  [item]="item"></app-item-card>
-            </mat-card>
+  <mat-card [ngClass]="{ 'is-side-panel-expanded': isSidePanelExpanded }">
+    <h2>Items:</h2>
+    <div class="container">
+      <div class="items-top-search-container row">
+        <div class="col-8">
+          <div class="input">
+            <input
+              class="form-control"
+              type="text"
+              name="search"
+              [(ngModel)]="searchText"
+              autocomplete="off"
+              placeholder="Start searching for item by name "
+            />
+          </div>
         </div>
-    </mat-card>
+        <div class="col-3">
+          <app-add-items></app-add-items>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4 justify-content-center">
+      <div class="col-12 col-lg-10">
+        <div class="item-cards my-2" *ngFor="let item of items | filter: searchText">
+          <mat-card class="inner-item-mat-card">
+            <app-item-card [item]="item"></app-item-card>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-card>
 </div>
