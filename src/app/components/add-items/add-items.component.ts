@@ -38,7 +38,6 @@ export class AddItemsComponent implements OnInit {
   ) {}
 
   openDialog(): void {
-    // tslint:disable-next-line: no-use-before-declare
     const dialogRef = this.dialog.open(DialogAddItemComponent, {
       width: "90%",
       maxWidth: "500px",
@@ -145,13 +144,13 @@ export class DialogAddItemComponent {
     this.dialogRef.close();
   }
 
-  addCategory() {
+addCategory() {
     this.isAddCategory = this.isAddCategory ? false : true;
   }
-  addSubCategory() {
+addSubCategory() {
     this.isAddSubCategory = this.isAddSubCategory ? false : true;
   }
-  addBrand() {
+addBrand() {
     this.isAddBrand = this.isAddBrand ? false : true;
   }
 

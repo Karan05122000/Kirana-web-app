@@ -62,6 +62,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ProductsService } from './services/products.service';
 import { TransactionService } from './services/transaction.service';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -122,7 +124,8 @@ import { TransactionService } from './services/transaction.service';
     InfiniteScrollModule,
     NgxSpinnerModule,
     ScrollingModule,
-    MatSliderModule
+    MatSliderModule,
+    MatSlideToggleModule
   ],
   providers: [
     ProductsService,
