@@ -17,6 +17,17 @@ export class ResetpasswordService {
   }
 
   buildURLS() {
-    this.productsURL = environment.backend_end_point + environment.products;
+    this.productsURL = environment.backend_end_point + environment.resetPassURL;
+  }
+  addNewPassword(data): Observable<any> {
+    return this.http.put(this.productsURL, JSON.stringify(data), {
+      headers: this.httpOptions,
+      observe: 'response'
+    })
+    .pipe(
+      catchError(error => {
+        return throwError(error);
+      })
+    );
   }
 }

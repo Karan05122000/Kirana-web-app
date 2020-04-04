@@ -68,4 +68,7 @@ export class Transactions {
   customer_name: string;
   customer_phone: number;
   }
-export class rese
+export class ResetPassword {
+  public old_password: any;
+  public new_password: any;
+}
