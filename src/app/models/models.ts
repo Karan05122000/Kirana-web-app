@@ -68,3 +68,4 @@ export class Transactions {
   customer_name: string;
   customer_phone: number;
   }
+export class rese
