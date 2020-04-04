@@ -55,6 +55,8 @@ import {StarRatingModule} from 'angular-star-rating';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ProductsService } from './services/products.service';
 import { TransactionService } from './services/transaction.service';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,7 +108,8 @@ import { TransactionService } from './services/transaction.service';
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatSliderModule
+    MatSliderModule,
+    MatSlideToggleModule
   ],
   providers: [
     ProductsService,

@@ -1,17 +1,14 @@
 <h1 mat-dialog-title>Add new Item</h1>
 <div mat-dialog-content>
-    <form class="example-form" [formGroup]="itemForm" (ngSubmit)="addItem(itemForm.value)">
-      <div class="name-container">
-        <mat-form-field class="example-half-width">
-          <mat-label>Name</mat-label>
-          <input matInput [(ngModel)]="newProduct.name" placeholder="Enter Name"
-          formControlName="Selected">
-          <mat-error *ngIf="itemForm.controls.brandSelected.errors">
-              Name is <strong>required</strong>
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="category-container">
+    <form class="example-form" [formGroup]="itemForm" (ngSubmit)="addItem()">
+        <div class="name-container">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="nameSelected" placeholder="Enter New Product Name">
+            <mat-error>Name is<strong> required</strong></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="category-container">
             <mat-form-field *ngIf="!isAddCategory">
               <mat-label>Category</mat-label>
               <mat-select formControlName="categorySelected">
@@ -26,9 +23,7 @@
             <div class="add-category-container" *ngIf="isAddCategory">
               <mat-form-field class="example-full-width">
                 <mat-label>New Category</mat-label>
-                <input name="category" matInput [(ngModel)]="newProduct.category"
-                formControlName="categorySelected"
-                placeholder="Enter new Category">
+                <input matInput formControlName="categorySelected" placeholder="Enter new Category">
                 <mat-error>
                   Category is <strong>required</strong>
                 </mat-error>
@@ -51,8 +46,7 @@
             <div class="add-sub-category-container" *ngIf="isAddSubCategory">
               <mat-form-field class="example-full-width">
                 <mat-label>New Sub-category</mat-label>
-                <input matInput [(ngModel)]="newProduct.sub_catogery" placeholder="Enter new Sub-category"
-                formControlName="subCategorySelected">
+                <input matInput placeholder="Enter new Sub-category" formControlName="subCategorySelected">
                 <mat-error *ngIf="itemForm.controls.subCategorySelected.errors">
                     Sub-category is <strong>required</strong>
                 </mat-error>
@@ -75,8 +69,7 @@
             <div class="add-brand-container" *ngIf="isAddBrand">
               <mat-form-field class="example-full-width">
                 <mat-label>New Brand</mat-label>
-                <input matInput [(ngModel)]="newProduct.brand" placeholder="Enter new Brand"
-                formControlName="brandSelected">
+                <input matInput placeholder="Enter new Brand" formControlName="brandSelected">
                 <mat-error *ngIf="itemForm.controls.brandSelected.errors">
                     Brand is <strong>required</strong>
                 </mat-error>
@@ -84,39 +77,46 @@
             </div>
             <button mat-raised-button (click)="addBrand()"><mat-icon aria-hidden="false" aria-label="Example home icon">{{isAddBrand == true ? 'remove':'add'}}</mat-icon></button>
         </div>
-
         <div class="quantity-container">
             <mat-form-field>
               <mat-label>Quantity Type</mat-label>
-              <mat-select formControlName="quantitySelected">
-                <mat-option [(ngModel)]="newProduct.quantity_type" *ngFor="let quantity of quantity_types"
-                [value]="quantity">
+              <mat-select formControlName="quantitytypeSelected">
+                <mat-option *ngFor="let quantity of quantity_types" [value]="quantity">
                   {{quantity}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
         </div>
-        <div class="variant-container">
-            <mat-form-field>
-              <mat-label>Variants</mat-label>
-              <mat-select formControlName="variantSelected">
-                <mat-option [(ngModel)]="newProduct.variants" *ngFor="let variant of variants[quantitySelected]"
-                [value]="variant">
-                  {{variant}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+        <div formGroupName="Variety">
+          <div class="quantity-container">
+            <h5>Variety</h5>
+            <button mat-raised-button (click)="addSubCategory()"><mat-icon aria-hidden="false" aria-label="Example home icon">{{isAddSubCategory == true ? 'remove':'add'}}</mat-icon></button>
+          </div>
+          <div>
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td><mat-form-field>
+                <input matInput placeholder="Variant" class="var input" formArrayName="variantSelected">
+              </mat-form-field></td>
+              <td><mat-form-field class="quan">
+                <input matInput placeholder="Quantity" class="quan input" formArrayName="quantitySelected">
+              </mat-form-field></td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div class="description-container">
           <mat-form-field class="example-full-width">
               <mat-label>Details</mat-label>
-              <textarea matInput [(ngModel)]="newProduct.details" formControlName="deatailsSelected" placeholder="Description of Item"
-              ></textarea>
+              <textarea matInput placeholder="Description of Item" formControlName="detailsSelected"></textarea>
             </mat-form-field>
+        </div>
+        <div>
+          <h4>Upload an image</h4>
+          <input type="file" (change)="onfilechange($event)">
         </div>
     </form>
 </div>
 <div mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data.animal" id="hov" cdkFocusInitial >Add</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Add</button>
 </div>

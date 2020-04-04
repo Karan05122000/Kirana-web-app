@@ -1,7 +1,9 @@
-import { Sent } from './../../models/models';
+import { ProductsService } from './../../services/products.service';
+import { _Items } from './../../models/models';
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
+
 export interface DialogData {
   animal: string;
   name: string;
@@ -15,14 +17,15 @@ export interface DialogData {
 export class AddItemsComponent implements OnInit {
   animal: string;
   name: string;
+
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    // tslint:disable-next-line: no-use-before-declare
     const dialogRef = this.dialog.open(DialogAddItemComponent, {
-      width: '350px',
+      width: '400px',
       data: {name: this.name, animal: this.animal}
     });
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.animal = result;
@@ -40,13 +43,7 @@ export class AddItemsComponent implements OnInit {
   styleUrls: ['./add-items-dialogue.scss']
 })
 
-export class DialogAddItemComponent {
-  categorySelected;
-  subCategorySelected;
-  brandSelected;
-  quantitySelected;
-  variantSelected;
-
+export class DialogAddItemComponent implements OnInit {
 
   categories = [
     'Dairy',
@@ -86,40 +83,63 @@ export class DialogAddItemComponent {
   isAddCategory: boolean;
   isAddSubCategory: boolean;
   isAddBrand: boolean;
-  newProduct = new Sent();
-  post: any;
-  itemForm: FormGroup;
-  constructor(
-    public dialogRef: MatDialogRef<DialogAddItemComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private fb: FormBuilder) {
-      console.log(this.itemForm);
-      this.itemForm = fb.group({
-        categorySelected: new FormControl(null, Validators.required),
-        subCategorySelected: new FormControl(null, Validators.required),
-        brandSelected: new FormControl(null, Validators.required),
-        nameSelected: new FormControl(null, Validators.required),
-        quantitySelected: new FormControl(),
-        variantSelected: new FormControl(),
-        detailsSelected: new FormControl(),
-      });
-    }
 
-  onNoClick(): void {
+  items: _Items[];
+  // tslint:disable-next-line: align
+  itemForm = this.fb.group({
+    nameSelected: ['', Validators.required],
+    categorySelected: ['', Validators.required],
+    subCategorySelected: ['', Validators.required],
+    brandSelected: ['', Validators.required],
+    quantitytypeSelected: [''],
+    detailsSelected: [''],
+    variety: this.fb.group({
+      variantSelected: this.fb.array([
+        this.fb.control
+      ])
+    })
+
+
+
+  });
+  // itemForm = new FormGroup({
+  //   categorySelected: new FormControl(null, Validators.required),
+  //   subCategorySelected: new FormControl(null, Validators.required),
+  //   brandSelected: new FormControl(null, Validators.required),
+  //   quantitySelected: new FormControl(),
+  //   variantSelected: new FormControl(),
+  //   nameSelected: new FormControl(),
+  // });
+
+constructor(public dialogRef: MatDialogRef<DialogAddItemComponent>,
+            @Inject(MAT_DIALOG_DATA) public data: DialogData, private productsService: ProductsService, private fb: FormBuilder) {
+      console.log(this.itemForm);
+    }
+ngOnInit() {
+      this.productsService.getAllProducts()
+        .subscribe( data => {
+          this.items = data;
+        });
+    }
+onNoClick(): void {
     this.dialogRef.close();
   }
 
-  addCategory() {
+addCategory() {
     this.isAddCategory = this.isAddCategory ? false : true;
   }
-  addSubCategory() {
+addSubCategory() {
     this.isAddSubCategory = this.isAddSubCategory ? false : true;
   }
-  addBrand() {
+addBrand() {
     this.isAddBrand = this.isAddBrand ? false : true;
   }
-  // tslint:disable-next-line: variable-name
-  addItem(_post) {
-  this.newProduct.category = _post.category;
-  console.log(this.newProduct.category);
+
+addItem() {
+
   }
+onfilechange(event) {
+    console.log(event);
+  }
+
 }

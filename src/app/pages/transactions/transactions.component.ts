@@ -16,7 +16,7 @@ import {
 import { FormGroup, FormControl } from '@angular/forms';
 import { formatDate } from '@angular/common';
 import { MatDatepickerInputEvent } from '@angular/material';
-// import { Transactions } from './../../models/models';
+import { Transactions } from './../../models/models';
 
 @Component({
   selector: 'app-transactions',
@@ -95,6 +95,7 @@ export class TransactionsComponent implements OnInit, OnChanges {
     }
   Status: string;
   }[];
+  allT: Transactions[];
   constructor(private interaction: InteractionService, private transaction: TransactionService) {
     this.filters = ['Retailer', 'Status', 'Date'];
     this.isSidePanelExpanded = this.interaction.getExpandedStatus();
@@ -105,7 +106,6 @@ export class TransactionsComponent implements OnInit, OnChanges {
       this.isSidePanelExpanded = res;
     });
     this.getTransactionHistory();
-
     console.log(this.searchDate);
   }
 
@@ -123,9 +123,9 @@ export class TransactionsComponent implements OnInit, OnChanges {
     this.allTransactions = this.transaction.getAllTransactions();
     this.transaction.getAllOrders().subscribe((res) => {
       console.log(res);
+      this.allT  = res;
     });
   }
-
   setStatusColor(status) {
     return status;
   }

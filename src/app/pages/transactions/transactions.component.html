@@ -12,10 +12,11 @@
                     <mat-form-field>
                       <mat-label>Retailer</mat-label>
                       <mat-select [(ngModel)]="searchRetail">
-                        <mat-option *ngFor="let retailer of retailers" [value]="retailer.viewValue" >
-                          {{retailer.viewValue}}
-                        </mat-option>
-
+                        <div *ngFor="let allt of allT">
+                          <mat-option *ngFor="let retailer of allt.retailer_name" [value]="retailer.viewValue" >
+                            {{retailer.viewValue}}
+                          </mat-option>
+                        </div>
                       </mat-select>
                     </mat-form-field>
                   </div>

@@ -26,7 +26,7 @@ export class ResetPassComponent {
   constructor(fb: FormBuilder, private interaction: InteractionService, public snackBar: MatSnackBar) {
     this.isSidePanelExpanded = this.interaction.getExpandedStatus();
     this.form1 = fb.group({
-      oldPwd: ['', Validators.required, OldPwdValidators.shouldBeOldOne],
+      oldPwd: [''],
       newPwd: ['', Validators.required],
       confirmPwd: ['', Validators.required]
     }, {
@@ -56,9 +56,7 @@ export class ResetPassComponent {
   // tslint:disable-next-line: member-ordering
   value = '';
   update(value: string) { this.value = value; }
-  // onChanges(): void {
-  //   console.log('MyForm > onChanges', this.form.value);
-  //   this.form.valueChanges.subscribe(value => {
-  //     this.formChange.emit(this.form);
-  //   });
+  onfilechange(event) {
+    console.log(event);
+  }
 }

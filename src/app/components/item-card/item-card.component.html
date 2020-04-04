@@ -7,7 +7,7 @@
             <div class="item-top-left">
                 <div class="item-name">
                     <h4>{{ item.name }}</h4>
-                    <h6>{{ item.id}}</h6>
+                    <h5><b>{{ item.brand }}</b></h5>
                 </div>
                 <div class="item-unit">
                     <h6><b>{{ item.category }}</b></h6>
@@ -23,9 +23,12 @@
             </div>
             <div class="item-variety">
                 <h5>Variety:</h5>
+                <div>
+                  <span><h4>Variants</h4><h4>Quantity</h4></span>
+                </div>
                 <i id="edit" class="fa fa-edit" ></i>
                 <ul>
-                    <li *ngFor="let variety of item.variant">{{ variety }}</li>
+                    <li *ngFor="let variety of item.variant_details">{{variety.variant}}<span class="sp">{{variety.quantity}}</span>{{item.quantity_type}}</li>
                 </ul>
             </div>
         </div>

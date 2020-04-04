@@ -1,3 +1,5 @@
+import { Time } from '@angular/common';
+
 export const Status = {
     DELIVERED: 'Delivered',
     ORDERED: 'Ordered',
@@ -5,18 +7,21 @@ export const Status = {
     CANCELLED: 'Cancelled',
     DISPATCHED: 'Dispatched'
 };
+class variants_details {
+  p_id: number;
+  variant: string;
+  quantity: string;
+
+}
 // tslint:disable-next-line: class-name
 export class _Items  {
-    id: number;
     name: string;
-    unit: string;
-    details: string;
-    price: string;
     category: string;
-    variant: string[];
-    sub_category: string[];
+    sub_category: string;
     brand: string;
-
+    variant_details: variants_details[];
+    quantity_type: string;
+    details: string;
 }
 export class DeleteItems {
   category: string;
@@ -46,3 +51,20 @@ export class Sent {
   name: string;
   variants: string[];
 }
+export class Transactions {
+  retailer_name: string;
+  bill_no: string;
+  quantity: number;
+  price: string;
+  payment_type: string;
+  products: string[];
+  id: number;
+  order_date: Date;
+  order_time: Time;
+  status: string;
+  vendor_name: string;
+  vendor_address: string;
+  customer_address: string;
+  customer_name: string;
+  customer_phone: number;
+  }
