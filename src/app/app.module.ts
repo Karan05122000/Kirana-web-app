@@ -56,7 +56,6 @@ import { NotificationComponent } from './components/notification/notification.co
 import { ProductsService } from './services/products.service';
 import { TransactionService } from './services/transaction.service';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
 @NgModule({
   declarations: [
     AppComponent,

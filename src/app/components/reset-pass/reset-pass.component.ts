@@ -1,6 +1,6 @@
 import { ResetpasswordService } from './../../services/resetpassword.service';
 import { InteractionService } from 'src/app/services/interaction.service';
-import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter, Inject } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { OldPwdValidators } from './old-password.validators';
 import {
@@ -8,6 +8,8 @@ import {
   MatSnackBarConfig,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
 } from '@angular/material';
 import { ResetPassword} from '../../models/models';
 @Component({
@@ -29,7 +31,8 @@ export class ResetPassComponent {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   constructor(fb: FormBuilder, private interaction: InteractionService, public snackBar: MatSnackBar,
-              private resetpasswordService: ResetpasswordService) {
+              private resetpasswordService: ResetpasswordService, public dialogRef: MatDialogRef<ResetPassComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
     this.isSidePanelExpanded = this.interaction.getExpandedStatus();
     this.form1 = fb.group({
       oldPwd: [''],
@@ -53,31 +56,19 @@ export class ResetPassComponent {
   openSnackBar() {
     this.resetPass.old_password = this.form1.controls.oldPwd.value;
     this.resetPass.new_password = this.form1.controls.newPwd.value;
-    console.log(this.resetPass.old_password);
-    console.log(this.resetPass.new_password);
     this.resetpasswordService.addNewPassword(this.resetPass)
       .subscribe(res => {
           this.mess = res.body.message;
-          console.log(res);
-          console.log(this.mess);
+          if (this.mess === 'password updated') {
+            this.snackBar.open(this.message, this.actionButtonLabel);
+          }
+          if (this.mess === 'failed') {
+            this.snackBar.open(this.errMessage, this.actionButtonLabel);
+          }
       });
-    if (this.mess === 'password updated') {
-        this.snackBar.open(this.message, this.actionButtonLabel);
-      }
-    if (this.mess === 'failed') {
-        alert(this.errMessage);
-      }
     this.form1.reset();
   }
-  status: boolean = false;
-  clickEvent() {
-      this.status = !this.status;
-  }
-  // tslint:disable-next-line: member-ordering
-  // tslint:disable-next-line: member-ordering
-  value = '';
-  update(value: string) { this.value = value; }
-  onfilechange(event) {
-    console.log(event);
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss']
 })
-export class NotificationComponent implements OnInit {
+export class NotificationComponent  {
   color: ThemePalette = 'accent';
   checkedNewOrder = false;
   checkedCancelledStatus = false;
   checkedCriticalStatus = false;
   disabled = false;
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<NotificationComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  ngOnInit(): void {
-  }
   newOrdersChange(event) {
     console.log(event.checked.toString());
   }
@@ -25,5 +25,8 @@ export class NotificationComponent implements OnInit {
   }
   CancelledStatusChange(event) {
     console.log(event.checked.toString());
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }
