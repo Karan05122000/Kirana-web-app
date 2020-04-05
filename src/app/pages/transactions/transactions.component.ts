@@ -5,7 +5,8 @@ import { OnChanges } from '@angular/core';
 
 import {
   Component,
-  OnInit
+  OnInit,
+  AfterContentChecked
 } from '@angular/core';
 import {
   InteractionService
@@ -16,6 +17,7 @@ import {
 import { FormGroup, FormControl } from '@angular/forms';
 import { formatDate } from '@angular/common';
 import { MatDatepickerInputEvent } from '@angular/material';
+import { SharedService } from "../../services/shared.service";
 
 @Component({
   selector: 'app-transactions',
@@ -76,7 +78,7 @@ export class TransactionsComponent implements OnInit, OnChanges {
   allTransactions: {
     Consumer: {
       Name: string;
-      Area: string;
+      Area: string; 
     }; 
     Retailer: {
       Name: string; 
@@ -93,10 +95,13 @@ export class TransactionsComponent implements OnInit, OnChanges {
     };
     Status: string;
   } [];
+  comp1val: string;
+  comp2val: string;
 
-  constructor(private interaction: InteractionService, private transaction: TransactionService) {
+  constructor(private interaction: InteractionService, private transaction: TransactionService,private sharedService: SharedService) {
     this.filters = ['Retailer', 'Status', 'Date'];
     this.isSidePanelExpanded = this.interaction.getExpandedStatus();
+
   }
 
   ngOnInit() {
@@ -111,6 +116,9 @@ export class TransactionsComponent implements OnInit, OnChanges {
   ngOnChanges() {
     console.log(this.searchDate);
 
+  }
+  ngAfterContentChecked(){
+    this.searchRetail=this.sharedService.comp1Val;
   }
 
   addEvent(type : string, event: MatDatepickerInputEvent<Date>){
