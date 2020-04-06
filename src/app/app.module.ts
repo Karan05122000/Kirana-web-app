@@ -56,6 +56,10 @@ import { NotificationComponent } from './components/notification/notification.co
 import { ProductsService } from './services/products.service';
 import { TransactionService } from './services/transaction.service';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { NotificationsPageComponent } from './pages/notifications-page/notifications-page.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,12 +81,14 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     AddItemsComponent,
     ResetPassComponent,
     NotificationComponent,
+    NotificationsPageComponent,
   ],
   entryComponents: [
     DialogComponent
   ],
   imports: [
     BrowserModule,
+    MatBadgeModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
@@ -95,6 +101,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatInputModule,
     MatIconModule,
     MatCardModule,
+    MatTooltipModule,
     MatMenuModule,
     MatSnackBarModule,
     MatToolbarModule,
@@ -102,6 +109,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatDividerModule,
     MatTableModule,
     MatPaginatorModule,
+    MatExpansionModule,
     MatSortModule,
     Ng2SearchPipeModule,
     MatDatepickerModule,

@@ -27,7 +27,9 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     window.location.reload();
   }
-
+  notifications() {
+    this.router.navigate(['/notifications']);
+  }
   feedbacks() {
     this.router.navigate(['/feedbacks']);
   }
