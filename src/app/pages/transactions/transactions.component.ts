@@ -1,8 +1,4 @@
-
 import { OnChanges } from '@angular/core';
-// import { Component, OnInit } from '@angular/core';
-// import { InteractionService } from 'src/app/services/interaction.service';
-
 import {
   Component,
   OnInit
@@ -24,10 +20,10 @@ import { MatDatepickerInputEvent } from '@angular/material';
 })
 export class TransactionsComponent implements OnInit, OnChanges {
 
-  searchRetail:any;
-  searchStatus:any;
-  searchDate1:any;
-  searchDate:any;
+  searchRetail: any;
+  searchStatus: any;
+  searchDate1: any;
+  searchDate: any;
   taskTotal = 10;
   taskRemaining = 0;
   retailers = [
@@ -64,36 +60,19 @@ export class TransactionsComponent implements OnInit, OnChanges {
     {
       value: 'status-5',
       viewValue: 'Dispatched'
+    },
+    {
+      value: 'status-6',
+      viewValue: 'Payment'
     }
   ];
   today = Date.now();
   daysOfTheWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   dateNumber = 0;
-
+  model: any = {};
   filters: string[];
   isSidePanelExpanded: boolean;
-  // tslint:disable-next-line: max-line-length
-  allTransactions: {
-    Consumer: {
-      Name: string;
-      Area: string;
-    }; 
-    Retailer: {
-      Name: string; 
-      Area: string;
-    };
-    OrderDetails: {
-      OrderDate: string; 
-      ItemsPurchased: {
-        ItemName: string; 
-        ItemPrice: number; 
-        Quantity: number;
-      } []; 
-      TotalPrice: number;
-    };
-    Status: string;
-  } [];
-
+  allTransaction: any;
   constructor(private interaction: InteractionService, private transaction: TransactionService) {
     this.filters = ['Retailer', 'Status', 'Date'];
     this.isSidePanelExpanded = this.interaction.getExpandedStatus();
@@ -104,7 +83,6 @@ export class TransactionsComponent implements OnInit, OnChanges {
       this.isSidePanelExpanded = res;
     });
     this.getTransactionHistory();
-
     console.log(this.searchDate);
   }
 
@@ -113,20 +91,17 @@ export class TransactionsComponent implements OnInit, OnChanges {
 
   }
 
-  addEvent(type : string, event: MatDatepickerInputEvent<Date>){
+  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.searchDate1 = (`${type}:${event.value.toLocaleDateString()}`);
-    this.searchDate=this.searchDate1.slice(6,16);
+    this.searchDate = this.searchDate1.slice(6, 16);
   }
 
   getTransactionHistory() {
-    this.allTransactions = this.transaction.getAllTransactions();
     this.transaction.getAllOrders().subscribe((res) => {
-      console.log(res);
+      this.allTransaction = JSON.parse(JSON.stringify(res.body));
     });
   }
-
-
-  setStatusColor(status) {
+  setStatusColor(status: any) {
     return status;
   }
 

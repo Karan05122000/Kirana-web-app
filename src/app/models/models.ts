@@ -3,6 +3,6 @@ export const Status = {
     ORDERED: 'Ordered',
     PACKED: 'Packed',
     CANCELLED: 'Cancelled',
-    DISPATCHED: 'Dispatched'
+    DISPATCHED: 'Dispatched',
+    Payment: 'Payment'
 };
-
