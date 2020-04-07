@@ -38,6 +38,10 @@ export class TransactionsComponent implements OnInit, OnChanges {
     {
       value: 'retailer-3',
       viewValue: 'Rebecca'
+    },
+    {
+      value: 'retailer-4',
+      viewValue: 'Kirana_vendor'
     }
   ];
   status = [

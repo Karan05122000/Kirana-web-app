@@ -4,5 +4,4 @@ export const Status = {
     PACKED: 'Packed',
     CANCELLED: 'Cancelled',
     DISPATCHED: 'Dispatched',
-    Payment: 'Payment'
 };
