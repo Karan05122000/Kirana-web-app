@@ -23,7 +23,12 @@ export class NotificationsPageComponent implements OnInit {
   newOrderNotification = NewOrderNotification;
   cancelledOrderNotification = CancelledOrderNotification;
   criticalOrderNotification = CriticalOrderNotification;
-  ngOnInit(): void {
+  currentDatetime = new Date();
+// tslint:disable-next-line: variable-name
+  formattedDate = this.currentDatetime.getDate() + '-' + (this.currentDatetime.getMonth() + 1) + '-' + this.currentDatetime.getFullYear();
+  ngOnInit() {
+    console.log(this.currentDatetime);
+    console.log(this.formattedDate);
   }
 
 }
