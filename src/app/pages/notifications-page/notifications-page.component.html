@@ -8,7 +8,7 @@
           New Order
         </mat-panel-title>
       </mat-expansion-panel-header>
-        <div *ngFor="let newNotification of newOrderNotification" >
+        <div *ngFor="let newNotification of newOrderFilter" >
           <div class="innerdiv">
             <h5 >New Critical Order for {{newNotification.ShopName}}</h5>
             <p class="od">Date: {{newNotification.OrderDate}}</p>

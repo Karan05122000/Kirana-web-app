@@ -25,10 +25,15 @@ export class NotificationsPageComponent implements OnInit {
   criticalOrderNotification = CriticalOrderNotification;
   currentDatetime = new Date();
 // tslint:disable-next-line: variable-name
-  formattedDate = this.currentDatetime.getDate() + '-' + (this.currentDatetime.getMonth() + 1) + '-' + this.currentDatetime.getFullYear();
+  formattedDate = this.currentDatetime.getDate() + '/' + (this.currentDatetime.getMonth() + 1) + '/' + this.currentDatetime.getFullYear();
+  // tslint:disable-next-line: align
+  temp = {records: this.newOrderNotification};
+  // tslint:disable-next-line: member-ordering
+  // tslint:disable-next-line: align
+  // tslint:disable-next-line: member-ordering
+  newOrderFilter = this.temp.records.filter( i => this.formattedDate.includes(i.OrderDate));
   ngOnInit() {
-    console.log(this.currentDatetime);
     console.log(this.formattedDate);
+    console.log(this.newOrderFilter);
   }
-
 }

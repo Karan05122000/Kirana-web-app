@@ -171,7 +171,7 @@ export const Items = [
 export const NewOrderNotification = [
       {
         OrderID: '1333632',
-        OrderDate: '20/12/2020',
+        OrderDate: '7/4/2020',
         Time: '08:45:25',
         ShopName: 'Kirana Shop 1',
         CustomerName: 'Pranav',
@@ -263,7 +263,7 @@ export const CancelledOrderNotification = [
   },
   {
     OrderID: '1333632',
-    OrderDate: '20/12/2020',
+    OrderDate: '7/4/2020',
     Time: '08:45:25',
     ShopName: 'Kirana Shop 4 ',
     CustomerName: 'Athreya',
