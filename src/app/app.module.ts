@@ -51,7 +51,6 @@ import { FeedbackCardComponent } from './components/feedback-card/feedback-card.
 import { AddItemsComponent } from './components/add-items/add-items.component';
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 import { MatSliderModule } from '@angular/material/slider';
-import {StarRatingModule} from 'angular-star-rating';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ProductsService } from './services/products.service';
 import { TransactionService } from './services/transaction.service';
