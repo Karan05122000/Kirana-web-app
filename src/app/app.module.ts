@@ -49,6 +49,10 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { FeedbacksComponent } from './pages/feedbacks/feedbacks.component';
 import { FeedbackCardComponent } from './components/feedback-card/feedback-card.component';
 import { AddItemsComponent } from './components/add-items/add-items.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -79,6 +83,7 @@ import { AddItemsComponent } from './components/add-items/add-items.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
     RatingModule,
     HttpClientModule,
     MatButtonModule,
@@ -99,6 +104,9 @@ import { AddItemsComponent } from './components/add-items/add-items.component';
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    InfiniteScrollModule,
+    NgxSpinnerModule,
+    ScrollingModule
   ],
   providers: [
     [AuthGuard, FilterPipe],

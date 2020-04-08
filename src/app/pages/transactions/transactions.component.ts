@@ -12,6 +12,9 @@ import {
 import { FormGroup, FormControl } from '@angular/forms';
 import { formatDate } from '@angular/common';
 import { MatDatepickerInputEvent } from '@angular/material';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-transactions',
@@ -20,69 +23,54 @@ import { MatDatepickerInputEvent } from '@angular/material';
 })
 export class TransactionsComponent implements OnInit, OnChanges {
 
+  notEmptyPost = true;
+  notscrolly = true;
   searchRetail: any;
   searchStatus: any;
   searchDate1: any;
   searchDate: any;
   taskTotal = 10;
   taskRemaining = 0;
-  retailers = [
-    {
-      value: 'retailer-1',
-      viewValue: 'Pranav'
-    },
-    {
-      value: 'retailer-2',
-      viewValue: 'Vijay'
-    },
-    {
-      value: 'retailer-3',
-      viewValue: 'Rebecca'
-    },
-    {
-      value: 'retailer-4',
-      viewValue: 'Kirana_vendor'
-    }
-  ];
-  status = [
-    {
-      value: 'status-1',
-      viewValue: 'Delivered'
-    },
-    {
-      value: 'status-2',
-      viewValue: 'Ordered'
-    },
-    {
-      value: 'status-3',
-      viewValue: 'Packed'
-    },
-    {
-      value: 'status-4',
-      viewValue: 'Cancelled'
-    },
-    {
-      value: 'status-5',
-      viewValue: 'Dispatched'
-    },
-    {
-      value: 'status-6',
-      viewValue: 'Payment'
-    }
-  ];
+  retailers = ['Pranav', 'Vijay', 'Rebecca', 'Kirana_vendor'];
+  status = ['Delivered', 'Ordered', 'Packed', 'Cancelled', 'Dispatched', 'Payment'];
   today = Date.now();
-  daysOfTheWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  dateNumber = 0;
   model: any = {};
   filters: string[];
   isSidePanelExpanded: boolean;
   allTransaction: any;
+  spinner: any;
+  myControl = new FormControl();
+  filteredOptions: Observable<string[]>;
+  private _filter(value: string): string[] {
+    const filterValue = value.toLocaleLowerCase();
+
+    return this.retailers.filter(retailer => retailer.toLowerCase().includes(filterValue));
+  }
+  // tslint:disable-next-line: member-ordering
+  statusControl = new FormControl();
+  // tslint:disable-next-line: member-ordering
+  statusFilteredOptions: Observable<string[]>;
+  private _statusFilter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.status.filter(state => state.toLowerCase().includes(filterValue));
+  }
   constructor(private interaction: InteractionService, private transaction: TransactionService) {
     this.filters = ['Retailer', 'Status', 'Date'];
     this.isSidePanelExpanded = this.interaction.getExpandedStatus();
   }
 
   ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value))
+      );
+    this.statusFilteredOptions = this.statusControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._statusFilter(value))
+      );
     this.interaction.expandedStatus$.subscribe((res) => {
       this.isSidePanelExpanded = res;
     });
@@ -103,10 +91,22 @@ export class TransactionsComponent implements OnInit, OnChanges {
   getTransactionHistory() {
     this.transaction.getAllOrders().subscribe((res) => {
       this.allTransaction = JSON.parse(JSON.stringify(res.body));
+      console.log(this.allTransaction);
+      this.retailers = this.allTransaction.vendor_name;
+      console.log(this.retailers);
     });
+  }
+  onScrollUp() {
+    console.log('scrolled up!!');
+  }
+  onScroll() {
+    console.log('scrolled!!');
   }
   setStatusColor(status: any) {
     return status;
   }
-
+  onReset() {
+    console.log('reset');
+    console.log(this.myControl);
+  }
 }
