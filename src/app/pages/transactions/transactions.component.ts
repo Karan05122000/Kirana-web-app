@@ -1,5 +1,5 @@
 import { Transaction } from './../../models/models';
-import { OnChanges } from '@angular/core';
+import { OnChanges, ViewChild } from '@angular/core';
 import {
   Component,
   OnInit
@@ -25,8 +25,6 @@ import { Router } from '@angular/router';
 })
 export class TransactionsComponent implements OnInit, OnChanges {
 
-  notEmptyPost = true;
-  notscrolly = true;
   searchRetail: any;
   searchStatus: any;
   searchDate1: any;
@@ -41,23 +39,30 @@ export class TransactionsComponent implements OnInit, OnChanges {
   isSidePanelExpanded: boolean;
   allTransaction: Transaction[];
   dup: Transaction[];
-  retdup: string[] = [];
+  removeDuplicate: string[] = [];
   temp = '';
   myControl = new FormControl();
   date: Date[] = [];
   orderDate: string[] = [];
+  statusControl = new FormControl();
+  statusFilteredOptions: Observable<string[]>;
+  dateControl = new FormControl();
+  dateFilteredOptions: Observable<string[]>;
   filteredOptions: Observable<string[]>;
+
   private _filter(value: string): string[] {
     const retailerFilterValue = value.toLocaleLowerCase();
     return this.retailers.filter(retailer => retailer.toLocaleLowerCase().includes(retailerFilterValue));
   }
-  // tslint:disable-next-line: member-ordering
-  statusControl = new FormControl();
-  // tslint:disable-next-line: member-ordering
-  statusFilteredOptions: Observable<string[]>;
+
   private _statusFilter(value: string): string[] {
     const statusFilterValue = value.toLowerCase();
     return this.status.filter(state => state.toLowerCase().includes(statusFilterValue));
+  }
+
+  private _dateFilter(value: string): string[] {
+    const dateFilterValue = value;
+    return this.status.filter(date => date.includes(dateFilterValue));
   }
   constructor(private interaction: InteractionService,
               private transaction: TransactionService, private router: Router, private spinner: NgxSpinnerService) {
@@ -70,6 +75,11 @@ export class TransactionsComponent implements OnInit, OnChanges {
       .pipe(
         startWith(''),
         map(value => this._statusFilter(value))
+      );
+    this.dateFilteredOptions = this.dateControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._dateFilter(value))
       );
     this.interaction.expandedStatus$.subscribe((res) => {
       this.isSidePanelExpanded = res;
@@ -86,11 +96,12 @@ export class TransactionsComponent implements OnInit, OnChanges {
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.searchDate1 = (`${type}:${event.value.toLocaleDateString()}`);
     this.searchDate = this.searchDate1.slice(6, 16);
-    console.log(typeof(this.searchDate));
+    console.log(this.searchDate);
   }
   getTransactionHistory() {
     this.transaction.getAllOrders().subscribe((res) => {
       this.allTransaction = res;
+      console.log(res);
       this.fun();
     });
   }
@@ -102,57 +113,30 @@ export class TransactionsComponent implements OnInit, OnChanges {
       + ('0' + (this.date[i].getMonth() + 1)).slice(-2) + '/'
       + this.date[i].getFullYear();
     }
-    console.log(this.orderDate[0]);
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.allTransaction.length; i++) {
-        this.retdup.push(this.allTransaction[i].vendor_name);
+        this.removeDuplicate.push(this.allTransaction[i].vendor_name);
     }
-    this.retdup.sort();
+    this.removeDuplicate.sort();
     // tslint:disable-next-line: prefer-for-of
-    for (let i = 0; i <  this.retdup.length; i++) {
-      if (this.retdup[i] !== this.temp) {
-        this.retailers.push(this.retdup[i]);
-        this.temp = this.retdup[i];
+    for (let i = 0; i <  this.removeDuplicate[i].length; i++) {
+      if (this.removeDuplicate[i] !== this.temp) {
+        this.retailers.push(this.removeDuplicate[i]);
+        this.temp = this.removeDuplicate[i];
       }
     }
-    console.log(this.retailers);
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filter(value))
       );
   }
-onScroll() {
-  if (this.notscrolly && this.notEmptyPost) {
-    this.spinner.show();
-    this.notscrolly = false;
-    this.loadNextPost();
-    }
-  }
-  loadNextPost() {
-    // return last post from the array
-    const lastPost = this.allTransaction[this.allTransaction.length - 1];
-    // get id of last post
-    const lastPostId = lastPost.id;
-    // sent this id as key value pare using formdata()
-    const dataToSend = new FormData();
-    dataToSend.append('id', dataToSend.toString());
-    this.transaction.getNextOrders(dataToSend)
-      .subscribe((data) => {
-        const newPost = data[0];
-        this.spinner.hide();
-        if (newPost.length === 0 ) {
-          this.notEmptyPost =  false;
-        }
-        this.allTransaction = this.allTransaction.concat(newPost);
-        this.notscrolly = true;
-      });
-  }
   setStatusColor(status: any) {
     return status;
   }
-  onReset() {
+  onReset(dateInput) {
     this.statusControl.setValue('');
     this.myControl.setValue('');
+    dateInput.value = '';
   }
 }
