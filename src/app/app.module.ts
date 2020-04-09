@@ -53,6 +53,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     MatAutocompleteModule,
     RatingModule,
     HttpClientModule,
@@ -106,11 +107,12 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     ReactiveFormsModule,
     InfiniteScrollModule,
     NgxSpinnerModule,
-    ScrollingModule
+    ScrollingModule,
   ],
   providers: [
     [AuthGuard, FilterPipe],
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })
