@@ -49,23 +49,23 @@
     //   }
     // }
 
-    // .third-container {
-    //   display: flex;
-    //   justify-content: space-between;
-    //   width: -webkit-fill-available;
-    //   margin: 10px 0px;
-    //   .recent-orders-container {
-    //     width: 70%;
-    //     margin-right: 20px;
-    //   }
-    //   .invite-requests-container {
-    //     width: 30%;
-    //     .invite-requests {
-    //       height: 313px;
-    //       overflow: auto;
-    //     }
-    //   }
-    // }
+    .third-container {
+      display: flex;
+      justify-content: space-between;
+      width: -webkit-fill-available;
+      margin: 10px 0px;
+      .recent-orders-container {
+        width: 70%;
+        margin-right: 20px;
+      }
+      .invite-requests-container {
+        width: 30%;
+        .invite-requests {
+          height: 313px;
+          overflow: auto;
+        }
+      }
+    }
   }
 
   .is-side-panel-expanded {

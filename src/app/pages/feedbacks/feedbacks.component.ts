@@ -1,7 +1,7 @@
 import { FilterPipe } from "./../../pipes/filter.pipe";
 import { Component, OnInit } from "@angular/core";
-import { InteractionService } from "src/app/services/interaction.service";
-import { FeedbackService } from "src/app/services/feedback.service";
+import { InteractionService } from "../../../app/services/interaction.service";
+import { FeedbackService } from "../../../app/services/feedback.service";
 
 @Component({
   selector: "app-feedbacks",

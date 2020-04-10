@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
-import { RetailerService } from "src/app/services/retailer.service";
+import { RetailerService } from "../../../app/services/retailer.service";
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from "@angular/material";
 
 @Component({
