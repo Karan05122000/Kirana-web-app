@@ -1,7 +1,7 @@
+import { Notifcations } from './../../models/models';
 import { Component, OnInit, Inject } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-
 @Component({
   selector: 'app-notification',
   templateUrl: './notification.component.html',
@@ -13,18 +13,20 @@ export class NotificationComponent  {
   checkedCancelledStatus = false;
   checkedCriticalStatus = false;
   disabled = false;
-
+  notify: Notifcations;
   constructor(public dialogRef: MatDialogRef<NotificationComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-  newOrdersChange(event) {
-    console.log(event.checked.toString());
+  newOrdersChange(newNotificationEvent) {
+    console.log(newNotificationEvent.checked.toString());
+    this.notify.isNewOrder = newNotificationEvent.checked.toString();
+    this.not
   }
-  CriticalStatusChange(event) {
-    console.log(event.checked.toString());
+  CriticalStatusChange(criticalNotificationEvent) {
+    console.log(criticalNotificationEvent.checked.toString());
   }
-  CancelledStatusChange(event) {
-    console.log(event.checked.toString());
+  CancelledStatusChange(cancelledlNotificationEvent) {
+    console.log(cancelledlNotificationEvent.checked.toString());
   }
   onNoClick(): void {
     this.dialogRef.close();

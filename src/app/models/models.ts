@@ -72,3 +72,9 @@ export class ResetPassword {
   public old_password: any;
   public new_password: any;
 }
+
+export class Notifcations {
+  isNewOrder: boolean;
+  isCancelledOrder: boolean;
+  isCriticalOrder: boolean;
+}

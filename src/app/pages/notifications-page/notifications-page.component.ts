@@ -8,6 +8,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material';
+import { NotificationComponent } from './../../components/notification/notification.component';
 @Component({
   selector: 'app-notifications-page',
   templateUrl: './notifications-page.component.html',
@@ -24,6 +25,8 @@ export class NotificationsPageComponent implements OnInit {
   cancelledOrderNotification = CancelledOrderNotification;
   criticalOrderNotification = CriticalOrderNotification;
   currentDatetime = new Date();
+  newnotification: NotificationComponent;
+  isNewOrder: boolean = this.newOrderNotification.newOrdersChange();
 // tslint:disable-next-line: variable-name
   formattedDate = this.currentDatetime.getDate() + '/' + (this.currentDatetime.getMonth() + 1) + '/' + this.currentDatetime.getFullYear();
   // tslint:disable-next-line: align

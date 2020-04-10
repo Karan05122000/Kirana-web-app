@@ -1,3 +1,4 @@
+import { SharingService } from './components/notification/notification.service';
 import { FilterPipe } from './pipes/filter.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -119,6 +120,7 @@ import {MatBadgeModule} from '@angular/material/badge';
   ],
   providers: [
     ProductsService,
+    SharingService,
     TransactionService,
     [AuthGuard, FilterPipe],
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
