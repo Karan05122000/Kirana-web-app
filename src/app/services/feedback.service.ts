@@ -7,7 +7,7 @@ import { throwError } from "rxjs";
 @Injectable({
   providedIn: "root",
 })
-export class ProductsService {
+export class FeedbackService {
   productsURL: string;
   imageUploadURL: string;
   httpOptions: any;
@@ -27,46 +27,12 @@ export class ProductsService {
       environment.backend_end_point + environment.imageUpload;
   }
 
-  getAllProducts() {
+  getAllFeedbacks() {
+    let feedbackURL = environment.backend_end_point + environment.feedbackURL;
     return this.http
-      .get(this.productsURL, {
+      .get(feedbackURL, {
         headers: this.httpOptions,
         observe: "response",
-      })
-      .pipe(
-        catchError((error) => {
-          return throwError(error);
-        })
-      );
-  }
-
-  addProduct(data) {
-    return this.http
-      .post(this.productsURL, JSON.stringify(data), {
-        headers: this.httpOptions,
-        observe: "response",
-      })
-      .pipe(
-        catchError((error) => {
-          return throwError(error);
-        })
-      );
-  }
-
-  uploadImage(data) {
-    const token = localStorage.getItem("access");
-    return this.http.post(this.imageUploadURL, data, {
-      headers: new HttpHeaders({
-        Authorization: "Bearer " + token,
-      }),
-      observe: "response",
-    });
-  }
-
-  deleteProduct(data) {
-    return this.http
-      .delete(this.productsURL + data, {
-        headers: this.httpOptions,
       })
       .pipe(
         catchError((error) => {
