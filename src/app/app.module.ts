@@ -52,6 +52,11 @@ import { AddItemsComponent } from './components/add-items/add-items.component';
 import { SharedService } from './services/shared.service';
 import { UpdateItemComponent, UpdateItemModal } from './components/update-item/update-item.component';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -86,7 +91,8 @@ import { UpdateItemComponent, UpdateItemModal } from './components/update-item/u
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    MatAutocompleteModule,
     RatingModule,
     HttpClientModule,
     MatButtonModule,
@@ -107,11 +113,15 @@ import { UpdateItemComponent, UpdateItemModal } from './components/update-item/u
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    InfiniteScrollModule,
+    NgxSpinnerModule,
+    ScrollingModule,
   ],
   providers: [
     [AuthGuard, FilterPipe],
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
-    SharedService
+    SharedService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
