@@ -24,11 +24,9 @@ export class ProductsService {
   }
 
   getAllProducts(): Observable<_Items[]> {
-    return this.http.get<_Items[]>(this.productsURL
-    //   headers: this.httpOptions,
-    //   observe: 'response'
-    // }
-    )
+    return this.http.get<_Items[]>(this.productsURL, {
+      headers: this.httpOptions
+    })
     .pipe(
       catchError(error => {
         return throwError(error);

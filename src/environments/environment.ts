@@ -15,8 +15,8 @@ export const environment = {
   loginURL: 'login/',
   tokenURL: 'api/token/',
   refreshURL: 'api/token/refresh',
-  resetPassURL: 'api/v1/update_password/'
-
+  resetPassURL: 'api/v1/update_password/',
+  notification: 'api/v1/notifications',
 };
 
 /*
