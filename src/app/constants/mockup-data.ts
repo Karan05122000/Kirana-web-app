@@ -77,7 +77,7 @@ export const Items = [
         name: 'Parle Monaco Sweet and Salty Biscuits',
         unit: '200g',
         // tslint:disable-next-line:max-line-length
-        description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor in doloribus aperiam iure praesentium quod excepturi magnam, eum perferendis natus ducimus inventore debitis molestiae ipsam ratione autem recusandae maxime officia.',
+        description: 'Lorem ipsum dolor,  Dolor in doloribus aperiam iure praesentium quod excepturi magnam, eum perferendis natus ducimus inventore debitis molestiae ipsam ratione autem recusandae maxime officia.',
         variety: ['Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores',
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores'],
         price: '0.1$'

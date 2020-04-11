@@ -57,6 +57,12 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { DatePipe } from '@angular/common';
+import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { NotificationComponent } from './components/notification/notification.component';
+import { ProductsService } from './services/products.service';
+import { TransactionService } from './services/transaction.service';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -81,7 +87,9 @@ import { DatePipe } from '@angular/common';
     SelectImageDialog,
     UpdateItemComponent,
     UpdateItemModal,
-    ShowInviteDetailModal
+    ShowInviteDetailModal,
+    ResetPassComponent,
+    NotificationComponent,
   ],
   entryComponents: [
     DialogComponent
@@ -116,8 +124,12 @@ import { DatePipe } from '@angular/common';
     InfiniteScrollModule,
     NgxSpinnerModule,
     ScrollingModule,
+    MatSliderModule,
+    MatSlideToggleModule
   ],
   providers: [
+    ProductsService,
+    TransactionService,
     [AuthGuard, FilterPipe],
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
     SharedService,

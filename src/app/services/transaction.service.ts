@@ -1,6 +1,5 @@
 import { Transaction } from './../models/models';
 import { Injectable } from '@angular/core';
-import { transactions } from '../constants/mockup-data';
 import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { catchError } from 'rxjs/operators';
@@ -12,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class TransactionService {
   getAllTransactionsURL: any;
+  tempURL: any;
   httpOptions;
   buildURLS() {
     this.getAllTransactionsURL = environment.backend_end_point + environment.orders;
