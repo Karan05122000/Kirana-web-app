@@ -26,30 +26,30 @@ export class NotificationComponent implements OnInit  {
 
   newOrdersChange(newNotificationEvent) {
     localStorage.setItem('newOrder', newNotificationEvent.checked.toString());
-    this.notificationService.sendNewOrder(newNotificationEvent.checked.toString());
     this.router.navigateByUrl('/login',
     {skipLocationChange: true})
     .then( () => {
       this.router.navigate(['/notifications']);
     });
+    this.notificationService.sendNewOrder(newNotificationEvent.checked.toString());
   }
   CriticalStatusChange(criticalNotificationEvent) {
     localStorage.setItem('criticalOrder', criticalNotificationEvent.checked.toString());
-    this.notificationService.sendCriticalOrder(criticalNotificationEvent.checked.toString());
     this.router.navigateByUrl('/login',
     {skipLocationChange: true})
     .then( () => {
       this.router.navigate(['/notifications']);
     });
+    this.notificationService.sendCriticalOrder(criticalNotificationEvent.checked.toString());
   }
   CancelledStatusChange(cancelledlNotificationEvent) {
     localStorage.setItem('cancelOrder', cancelledlNotificationEvent.checked.toString());
-    this.notificationService.sendCancelOrder(cancelledlNotificationEvent.checked.toString());
     this.router.navigateByUrl('/login',
     {skipLocationChange: true})
     .then( () => {
       this.router.navigate(['/notifications']);
     });
+    this.notificationService.sendCancelOrder(cancelledlNotificationEvent.checked.toString());
   }
   onNoClick(): void {
     this.dialogRef.close();

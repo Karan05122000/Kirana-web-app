@@ -25,24 +25,27 @@ export class NotificationsPageComponent implements OnInit {
   newOrderStatus: any;
   criticalOrderStatus: any;
   cancelOrderStatus: any;
-  newOrderNotification = NewOrderNotification;
-  cancelledOrderNotification = CancelledOrderNotification;
-  criticalOrderNotification = CriticalOrderNotification;
-  currentDatetime = new Date();
-  formattedDate = this.currentDatetime.getDate() + '/' + (this.currentDatetime.getMonth() + 1) + '/' + this.currentDatetime.getFullYear();
+  mockNewOrderNotification = NewOrderNotification;
+  mockCancelledOrderNotification = CancelledOrderNotification;
+  mockCriticalOrderNotification = CriticalOrderNotification;
+  newOrderNotification: any[] = [];
+  cancelOrderNotification: any[] = [];
+  critcalOrderNotification: any[] = [];
+  today = new Date();
+  tomorrow = new Date();
+  formattedDate = this.today.getDate() + '/' + (this.today.getMonth() + 1) + '/' + this.today.getFullYear();
   newOrd: any;
   cancelOrd: any;
   criticalOrd: any;
-
   newOrderFilter: any;
   criticalOrderFilter: any;
   cancelOrderFilter: any;
+
   ngOnInit() {
     this.newOrderStatus = localStorage.getItem('newOrder');
-
-    this.cancelOrderStatus = localStorage.getItem('cancelOrder');
-    this.criticalOrderStatus = localStorage.getItem('criticalOrder');
-
+    console.log(this.newOrderStatus);
+    // this.cancelOrderStatus = localStorage.getItem('cancelOrder');
+    // this.criticalOrderStatus = localStorage.getItem('criticalOrder');
     this.notificationService.newOrderSetting$
       .subscribe( msg => {
         this.newOrderStatus = msg;
@@ -63,30 +66,35 @@ export class NotificationsPageComponent implements OnInit {
     this.criticalOrder();
   }
 
-  newOrder() {
-    this.notificationsService.getAllNewNotifications()
-      .subscribe( data => {
-        this.newOrderNotification = data;
-        this.newOrd = {records: this.newOrderNotification};
-        this.newOrderFilter = this.newOrd.records.filter( (i: { OrderDate: string; }) => this.formattedDate.includes(i.OrderDate));
-      });
+newOrder() {
+    // this.notificationsService.getAllNewNotifications()
+    //   .subscribe( data => {
+    //     this.mockNewOrderNotification = data;
+    //     this.newOrderNotification = this.newOrderNotification.concat(this.mockNewOrderNotification);
+    //     this.newOrd = {records: this.mockNewOrderNotification};
+    //     this.newOrderFilter = this.newOrd.records.filter( (i: { OrderDate: string; }) => this.formattedDate.includes(i.OrderDate));
+    //   });
   }
 
-  criticalOrder() {
-    this.notificationsService.getAllCriticalNotifications()
-      .subscribe( data => {
-        this.criticalOrderNotification = data;
-        this.criticalOrd = {records: this.criticalOrderNotification};
-        this.criticalOrderFilter = this.criticalOrd.records.filter((i: { OrderDate: string; }) => this.formattedDate.includes(i.OrderDate));
-      });
+criticalOrder() {
+    // this.notificationsService.getAllCriticalNotifications()
+    //   .subscribe( data => {
+    //     this.mockCriticalOrderNotification = data;
+    //     this.critcalOrderNotification = this.critcalOrderNotification.concat(this.mockCriticalOrderNotification);
+    //     this.criticalOrd = {records: this.mockCriticalOrderNotification};
+    //     this.criticalOrderFilter = this.criticalOrd.records.filter((i: { OrderDate: string; }) =>
+    //     this.formattedDate.includes(i.OrderDate));
+    //   });
   }
 
-  cancelOrder() {
-    this.notificationsService.getAllCancelledNotifications()
-      .subscribe( data => {
-        this.cancelledOrderNotification = data;
-        this.cancelOrd = {records: this.cancelledOrderNotification};
-        this.cancelOrderFilter = this.criticalOrd.records.filter((i: { OrderDate: string; }) => this.formattedDate.includes(i.OrderDate));
-      });
+cancelOrder() {
+    // this.notificationsService.getAllCancelledNotifications()
+    //   .subscribe( data => {
+    //     this.mockCancelledOrderNotification = data;
+    //     this.cancelOrderNotification = this.cancelOrderNotification.concat(this.mockCancelledOrderNotification);
+    //     this.cancelOrd = {records: this.mockCancelledOrderNotification};
+    //     this.cancelOrderFilter = this.criticalOrd.records.filter((i: { OrderDate: string; }) =>
+    //     this.formattedDate.includes(i.OrderDate));
+    //   });
   }
 }

@@ -33,7 +33,7 @@
             Cancelled Order
           </mat-panel-title>
         </mat-expansion-panel-header>
-          <div *ngFor="let cancelledNotification of cancelledOrderNotification" >
+          <div *ngFor="let cancelledNotification of cancelOrderFilter" >
             <div class="innerdiv">
               <h5>New Cancelled Order for {{cancelledNotification.ShopName}}</h5>
               <p class="od">Date: {{cancelledNotification.OrderDate}}</p>
@@ -57,7 +57,7 @@
             Critical Order
           </mat-panel-title>
         </mat-expansion-panel-header>
-          <div *ngFor="let criticalNotification of criticalOrderNotification">
+          <div *ngFor="let criticalNotification of criticalOrderFilter">
             <div class="innerdiv" style="overflow: hidden;">
               <h5>New Critical Order for {{criticalNotification.ShopName}}</h5>
               <p class="od">Date: {{criticalNotification.OrderDate}}</p>
