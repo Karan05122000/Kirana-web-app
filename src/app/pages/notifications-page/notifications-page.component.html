@@ -1,7 +1,7 @@
 <div class="outer">
   <h3>Notifications</h3>
   <mat-accordion multi='true'>
-    <div *ngIf="newOrderStatus==='true'">
+    <div *ngIf="newOrderStatus =='true'">
       <mat-expansion-panel
         (opened)="panelOpenState = true"
         (closed)="panelOpenState = false">
@@ -25,7 +25,7 @@
         </div>
       </mat-expansion-panel>
     </div>
-    <div *ngIf="cancelOrderStatus==='true'">
+    <div *ngIf="cancelOrderStatus =='true'">
       <mat-expansion-panel (opened)="panelOpenState = true"
                          (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
@@ -48,7 +48,7 @@
           </div>
       </mat-expansion-panel>
     </div>
-    <div *ngIf="criticalOrderStatus==='true'">
+    <div *ngIf="criticalOrderStatus =='true'">
       <mat-expansion-panel
         (opened)="panelOpenState = true"
         (closed)="panelOpenState = false">
