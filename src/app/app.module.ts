@@ -1,4 +1,3 @@
-import { SharingService } from './components/notification/notification.service';
 import { FilterPipe } from './pipes/filter.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -60,6 +59,8 @@ import { NotificationsPageComponent } from './pages/notifications-page/notificat
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
+import { NotificationService } from './components/notification/notification.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -120,7 +121,7 @@ import {MatBadgeModule} from '@angular/material/badge';
   ],
   providers: [
     ProductsService,
-    SharingService,
+    NotificationService,
     TransactionService,
     [AuthGuard, FilterPipe],
     {provide: MAT_DATE_LOCALE, useValue: 'en-IN'},
