@@ -100,7 +100,7 @@ export class TransactionsComponent implements OnInit {
 
   getTransactionHistory() {
     this.transactionService.getAllOrders().subscribe((res) => {
-      this.allTransaction = res.body;
+      this.allTransaction = res;
       this.allTransaction.reverse();
 
       this.pageEvent = {
