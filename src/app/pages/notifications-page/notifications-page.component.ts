@@ -1,3 +1,4 @@
+import { NotificationsService } from './../../services/notifications.service';
 import { NotificationService } from './../../components/notification/notification.service';
 import { NewOrderNotification, CancelledOrderNotification, CriticalOrderNotification } from './../../constants/mockup-data';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,7 @@ import {
   styleUrls: ['./notifications-page.component.scss']
 })
 export class NotificationsPageComponent implements OnInit {
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationService: NotificationService, private notificationsService: NotificationsService) { }
   message = 'Password changed sucessfully';
   errMessage = 'Old Password not valid !!!';
   actionButtonLabel = 'OK';
@@ -29,9 +30,13 @@ export class NotificationsPageComponent implements OnInit {
   criticalOrderNotification = CriticalOrderNotification;
   currentDatetime = new Date();
   formattedDate = this.currentDatetime.getDate() + '/' + (this.currentDatetime.getMonth() + 1) + '/' + this.currentDatetime.getFullYear();
-  temp = {records: this.newOrderNotification};
-  newOrderFilter = this.temp.records.filter( i => this.formattedDate.includes(i.OrderDate));
+  newOrd: any;
+  cancelOrd: any;
+  criticalOrd: any;
 
+  newOrderFilter: any;
+  criticalOrderFilter: any;
+  cancelOrderFilter: any;
   ngOnInit() {
     this.newOrderStatus = localStorage.getItem('newOrder');
 
@@ -52,5 +57,36 @@ export class NotificationsPageComponent implements OnInit {
     .subscribe( msg => {
       this.cancelOrderStatus = msg;
     });
+
+    this.newOrder();
+    this.cancelOrder();
+    this.criticalOrder();
+  }
+
+  newOrder() {
+    this.notificationsService.getAllNewNotifications()
+      .subscribe( data => {
+        this.newOrderNotification = data;
+        this.newOrd = {records: this.newOrderNotification};
+        this.newOrderFilter = this.newOrd.records.filter( (i: { OrderDate: string; }) => this.formattedDate.includes(i.OrderDate));
+      });
+  }
+
+  criticalOrder() {
+    this.notificationsService.getAllCriticalNotifications()
+      .subscribe( data => {
+        this.criticalOrderNotification = data;
+        this.criticalOrd = {records: this.criticalOrderNotification};
+        this.criticalOrderFilter = this.criticalOrd.records.filter((i: { OrderDate: string; }) => this.formattedDate.includes(i.OrderDate));
+      });
+  }
+
+  cancelOrder() {
+    this.notificationsService.getAllCancelledNotifications()
+      .subscribe( data => {
+        this.cancelledOrderNotification = data;
+        this.cancelOrd = {records: this.cancelledOrderNotification};
+        this.cancelOrderFilter = this.criticalOrd.records.filter((i: { OrderDate: string; }) => this.formattedDate.includes(i.OrderDate));
+      });
   }
 }
